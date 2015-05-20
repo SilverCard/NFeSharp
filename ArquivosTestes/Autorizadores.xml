@@ -1,0 +1,58 @@
+<Autorizadores>
+	<Autorizador ID="RS" Nome="Rio Grande do Sul" Contigencia="false">
+	<Servicos>		
+		<Servico Nome="NfeConsultaCadastro" Versao="1.00">https://cad.sefazrs.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro2.asmx</Servico>
+		<Servico Nome="RecepcaoEvento" Versao="1.00">https://nfe.sefazrs.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</Servico>
+		<Servico Nome="NfeDownloadNF" Versao="1.01">https://nfe.sefazrs.rs.gov.br/ws/nfeDownloadNF/nfeDownloadNF.asmx</Servico>
+		<Servico Nome="NfeConsultaDest" Versao="2.00">https://nfe.sefazrs.rs.gov.br/ws/nfeConsultaDest/nfeConsultaDest.asmx</Servico>
+		<Servico Nome="NfeInutilizacao" Versao="3.10">https://nfe.sefazrs.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</Servico>
+		<Servico Nome="NfeConsultaProtocolo" Versao="3.10">https://nfe.sefazrs.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</Servico>
+		<Servico Nome="NfeStatusNome" Versao="3.10">https://nfe.sefazrs.rs.gov.br/ws/NfeStatusNome/NfeStatusNome2.asmx</Servico>
+		<Servico Nome="NFeAutorizacao" Versao="3.10">https://nfe.sefazrs.rs.gov.br/ws/NfeAutorizacao/NFeAutorizacao.asmx</Servico>
+		<Servico Nome="NFeRetAutorizacao" Versao="3.10">https://nfe.sefazrs.rs.gov.br/ws/NfeRetAutorizacao/NFeRetAutorizacao.asmx</Servico>		
+	</Servicos>
+	<Utilizadores>
+		<UF>RS</UF>
+		<UF>MT</UF>
+	</Utilizadores>
+	</Autorizador>
+	<Autorizador ID="AN" Nome="Ambiente Nacional" Contigencia="false">
+	<Servicos>		
+		<Servico Nome="RecepcaoEvento" Versao="1.00">https://www.nfe.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</Servico>
+		<Servico Nome="NFeDistribuicaoDFe" Versao="1.00">https://www1.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx</Servico>		
+		<Servico Nome="NfeConsultaDest" Versao="3.10">https://www.nfe.fazenda.gov.br/NFeConsultaDest/NFeConsultaDest.asmx</Servico>
+		<Servico Nome="NfeConsultaDest" Versao="2.00">https://www.nfe.fazenda.gov.br/NFeConsultaDest/NFeConsultaDest.asmx</Servico>		
+		<Servico Nome="NfeDownloadNF" Versao="3.10">https://www.nfe.fazenda.gov.br/NfeDownloadNF/NfeDownloadNF.asmx</Servico>
+		<Servico Nome="NfeDownloadNF" Versao="2.00">https://www.nfe.fazenda.gov.br/NfeDownloadNF/NfeDownloadNF.asmx</Servico>		
+	</Servicos>
+	<Utilizadores>
+		<UF>AC</UF>
+		<UF>AL</UF>
+		<UF>AP</UF>
+		<UF>AM</UF>
+		<UF>BA</UF>
+		<UF>CE</UF>
+		<UF>DF</UF>
+		<UF>ES</UF>
+		<UF>GO</UF>
+		<UF>MA</UF>
+		<UF>MT</UF>
+		<UF>MS</UF>
+		<UF>MG</UF>
+		<UF>PA</UF>
+		<UF>PB</UF>
+		<UF>PR</UF>
+		<UF>PE</UF>
+		<UF>PI</UF>
+		<UF>RJ</UF>
+		<UF>RN</UF>
+		<UF>RS</UF>
+		<UF>RO</UF>
+		<UF>RR</UF>
+		<UF>SC</UF>
+		<UF>SP</UF>
+		<UF>SE</UF>
+		<UF>TO</UF>
+	</Utilizadores>
+	</Autorizador>
+</Autorizadores>

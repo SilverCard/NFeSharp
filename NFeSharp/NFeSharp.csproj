@@ -39,16 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autorizadores.cs" />
     <Compile Include="Esquemas\TiposBasicos\TAmb.cs" />
     <Compile Include="Esquemas\TiposBasicos\TCOrgaoIBGE.cs" />
     <Compile Include="Esquemas\TiposBasicos\TipoDocumento.cs" />
     <Compile Include="Esquemas\TiposBasicos\XmldSig.cs" />
     <Compile Include="Esquemas\v1_00\distDFeInt.cs" />
+    <Compile Include="IdentificadorWebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Esquemas\v1_00\resEvento.cs" />
     <Compile Include="UnidadesFederativas.cs" />
     <Compile Include="Esquemas\v1_00\resNFe.cs" />
     <Compile Include="Esquemas\v1_00\retDistDFeInt.cs" />
+    <Compile Include="VersaoWebService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Esquemas\v2_00\" />
