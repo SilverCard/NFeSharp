@@ -9,7 +9,7 @@ namespace NFeSharp
     /// <summary>
     /// Enumeração contendo as Unidades Federativas do Brasil, associadas ao seu respectivo código do IBGE.
     /// </summary>
-    public enum Estado : int
+    public enum UnidadesFederativas : int
     {
         // Região Norte
         RO = 11,

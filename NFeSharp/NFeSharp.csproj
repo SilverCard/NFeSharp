@@ -39,11 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Esquemas\TiposBasicos\TAmb.cs" />
+    <Compile Include="Esquemas\v1_00\distDFeInt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Esquemas\v1_00\resEvento.cs" />
     <Compile Include="UnidadesFederativas.cs" />
+    <Compile Include="Esquemas\v1_00\resNFe.cs" />
+    <Compile Include="Esquemas\v1_00\retDistDFeInt.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Esquemas\" />
+    <Folder Include="Esquemas\v2_00\" />
+    <Folder Include="Esquemas\v3_10\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
