@@ -5,76 +5,132 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace NFeSharp
+namespace NFeSharp.Esquemas.TiposBasicos
 {
-    /// <summary>
-    /// Enumeração contendo as Unidades Federativas do Brasil, associadas ao seu respectivo código do IBGE.
-    /// </summary>
-    public enum UnidadesFederativas : int
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public enum TCOrgaoIBGE
     {
-        // Região Norte
+
+
         [XmlEnum("11")]
-        RO = 11,
+        Item11,
+
+
         [XmlEnum("12")]
-        AC = 12,
+        Item12,
+
+
         [XmlEnum("13")]
-        AM = 13,
+        Item13,
+
+
         [XmlEnum("14")]
-        RR = 14,
+        Item14,
+
+
         [XmlEnum("15")]
-        PA = 15,
+        Item15,
+
+
         [XmlEnum("16")]
-        AP = 16,
+        Item16,
+
+
         [XmlEnum("17")]
-        TO = 17,
+        Item17,
 
-        // Região Nordeste
+
         [XmlEnum("21")]
-        MA = 21,
+        Item21,
+
+
         [XmlEnum("22")]
-        PI = 22,
+        Item22,
+
+
         [XmlEnum("23")]
-        CE = 23,
+        Item23,
+
+
         [XmlEnum("24")]
-        RN = 24,
+        Item24,
+
+
         [XmlEnum("25")]
-        PB = 25,
+        Item25,
+
+
         [XmlEnum("26")]
-        PE = 26,
+        Item26,
+
+
         [XmlEnum("27")]
-        AL = 27,
+        Item27,
+
+
         [XmlEnum("28")]
-        SE = 28,
+        Item28,
+
+
         [XmlEnum("29")]
-        BA = 29,
+        Item29,
 
-        // Região Sudeste
+
         [XmlEnum("31")]
-        MG = 31,
+        Item31,
+
+
         [XmlEnum("32")]
-        ES = 32,
+        Item32,
+
+
         [XmlEnum("33")]
-        RJ = 33,
+        Item33,
+
+
         [XmlEnum("35")]
-        SP = 35,
+        Item35,
 
-        // Região Sul
+
         [XmlEnum("41")]
-        PR = 41,
+        Item41,
+
+
         [XmlEnum("42")]
-        SC = 42,
+        Item42,
+
+
         [XmlEnum("43")]
-        RS = 43,
+        Item43,
 
-        // Região Centro-Oeste
+
         [XmlEnum("50")]
-        MS = 50,
-        [XmlEnum("51")]
-        MT = 51,
-        [XmlEnum("52")]
-        GO = 52,
-        [XmlEnum("53")]
-        DF = 53,
+        Item50,
 
+
+        [XmlEnum("51")]
+        Item51,
+
+
+        [XmlEnum("52")]
+        Item52,
+
+
+        [XmlEnum("53")]
+        Item53,
+
+
+        [XmlEnum("90")]
+        Item90,
+
+
+        [XmlEnum("91")]
+        Item91,
+
+
+        [XmlEnum("92")]
+        Item92,
     }
+
 }

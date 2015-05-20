@@ -40,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Esquemas\TiposBasicos\TAmb.cs" />
+    <Compile Include="Esquemas\TiposBasicos\TCOrgaoIBGE.cs" />
+    <Compile Include="Esquemas\TiposBasicos\TipoDocumento.cs" />
+    <Compile Include="Esquemas\TiposBasicos\XmldSig.cs" />
     <Compile Include="Esquemas\v1_00\distDFeInt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Esquemas\v1_00\resEvento.cs" />
