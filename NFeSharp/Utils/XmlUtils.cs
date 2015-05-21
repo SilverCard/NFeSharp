@@ -19,7 +19,8 @@ namespace NFeSharp.Utils
         private static readonly Dictionary<Tuple<String, String>, Type> TypeDicionary = new Dictionary<Tuple<String, String>, Type>() {
             { Tuple.Create<String,String>("resEvento", "1.00"), typeof(NFeSharp.Esquemas.v1_00.resEvento) },
             { Tuple.Create<String,String>("resNFe", "1.00"), typeof(NFeSharp.Esquemas.v1_00.resNFe) },
-            { Tuple.Create<String,String>("procEventoNFe", "1.00"), typeof(NFeSharp.Esquemas.v1_00.TProcEvento) }
+            { Tuple.Create<String,String>("procEventoNFe", "1.00"), typeof(NFeSharp.Esquemas.v1_00.TProcEvento) },
+            { Tuple.Create<String,String>("procNFe", "3.00"), typeof(NFeSharp.Esquemas.v3_10.nfeProc) }
         };
 
         /// <summary>

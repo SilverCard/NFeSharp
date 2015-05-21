@@ -7,7 +7,7 @@ namespace NFeSharp.Esquemas.v3_10
     [Serializable]
     [XmlType(Namespace = Namespaces.NFe)]
     [XmlRoot("retConsSitNFe", Namespace = Namespaces.NFe, IsNullable = false)]
-    public class TRetConsSitNFe
+    public class retConsSitNFe
     {
 
         public TAmb tpAmb { get; set; }
@@ -52,46 +52,12 @@ namespace NFeSharp.Esquemas.v3_10
         
         [XmlAttribute]
         public string versao { get; set; }     
-    }
+    }    
 
-    
-
-    [Serializable]
-    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
-    public class TProtNFeInfProt
-    {
-
-
-        public TAmb tpAmb { get; set; }
-
-        public string verAplic { get; set; }
-
-
-        public string chNFe { get; set; }
-
-        public DateTime dhRecbto { get; set; }
-
-        public string nProt { get; set; }   
-        
-        [XmlElement(DataType = "base64Binary")]
-        public byte[] digVal { get; set; }
-
-
-        public string cStat { get; set; }
-
-
-        public string xMotivo { get; set; }   
-
-        
-        [XmlAttribute(DataType = "ID")]
-        public string Id { get; set; }
-    }
 
     
     
     [Serializable]
-
-
     [XmlType(Namespace = Namespaces.NFe)]
     public class TRetEvento
     {

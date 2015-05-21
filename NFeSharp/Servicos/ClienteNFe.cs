@@ -46,9 +46,9 @@ namespace NFeSharp.Servicos
             servico.ClientCertificates.Add(certificado.CertificadoInterno);
         }
 
-        public NFeSharp.Esquemas.v3_10.TRetConsSitNFe NfeConsulta2(String chaveAcesso)
+        public NFeSharp.Esquemas.v3_10.retConsSitNFe NfeConsulta2(String chaveAcesso)
         {
-            NFeSharp.Esquemas.v3_10.TConsSitNFe param = new NFeSharp.Esquemas.v3_10.TConsSitNFe();
+            NFeSharp.Esquemas.v3_10.consSitNFe param = new NFeSharp.Esquemas.v3_10.consSitNFe();
             param.chNFe = chaveAcesso;
             param.tpAmb = this.TipoAmbiente;
             var ws = new NfeConsulta2();
@@ -56,9 +56,9 @@ namespace NFeSharp.Servicos
             ws.Cabecalho.cUF = NFeUtils.PegarCodigoUFChaveAcesso(param.chNFe);
             ws.Cabecalho.versaoDados = "3.10";
             ws.Url = this.PegarUrlServico(IdentificadorServicos.NfeConsultaProtocolo, (UnidadesFederativas)ws.Cabecalho.cUF, VersaoServico.v3_10, false);
-            var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v3_10.TConsSitNFe>(param);
+            var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v3_10.consSitNFe>(param);
             var response = ws.nfeConsultaNF2(msg);
-            return XmlUtils.Deserialize<NFeSharp.Esquemas.v3_10.TRetConsSitNFe>(response);
+            return XmlUtils.Deserialize<NFeSharp.Esquemas.v3_10.retConsSitNFe>(response);
         }
 
         /// <summary>
