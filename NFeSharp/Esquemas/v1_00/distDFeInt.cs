@@ -12,7 +12,7 @@ namespace NFeSharp.Esquemas.v1_00
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     [XmlRootAttribute(Namespace = Namespaces.NFe, IsNullable = false)]
-    public partial class distDFeInt
+    public class distDFeInt
     {
         /// <summary>
         /// Identificação do Ambiente
@@ -49,7 +49,7 @@ namespace NFeSharp.Esquemas.v1_00
     /// </summary>
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
-    public partial class consNSU {
+    public class consNSU {
         
         /// <summary>
         /// úmero Sequencial Único. Geralmente esta consulta será utilizada quando identificado pelo interessado um NSU faltante. O Web Service retornará o documento ou informará que o NSU não existe no Ambiente Nacional. Assim, esta consulta fechará a lacuna do NSU identificado como faltante.
@@ -64,7 +64,7 @@ namespace NFeSharp.Esquemas.v1_00
     /// </summary>
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
-    public partial class distNSU {
+    public class distNSU {
         
         /// <summary>
         /// Último NSU recebido pelo ator. Caso seja informado com zero, ou com um NSU muito antigo, a consulta retornará unicamente as informações resumidas e documentos fiscais eletrônicos que tenham sido recepcionados pelo Ambiente Nacional nos últimos 3 meses.

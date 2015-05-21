@@ -36,11 +36,11 @@ namespace NFeSharp.Servicos
     {
 
         [XmlArray(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [XmlArrayItem("Servicos", typeof(Servico), Form = XmlSchemaForm.Unqualified)]
+        [XmlArrayItem("Servico", typeof(Servico), Form = XmlSchemaForm.Unqualified)]
         public Servico[] Servicos;
 
         [XmlArray(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [XmlArrayItem("Utilizadores", typeof(UnidadesFederativas), Form = XmlSchemaForm.Unqualified, ElementName = "UF")]
+        [XmlArrayItem("Utilizadores", typeof(UnidadesFederativas2), Form = XmlSchemaForm.Unqualified, ElementName = "UF")]
         public UnidadesFederativas[] Utilizadores;
 
         [XmlAttribute]
@@ -57,23 +57,25 @@ namespace NFeSharp.Servicos
             return String.Format("{0}:{1}", ID, Nome);
         }
 
-        [Serializable]
-        [XmlType(AnonymousType = true)]
-        public class Servico
+
+    }
+
+    [Serializable]
+    [XmlType(AnonymousType = true)]
+    public class Servico
+    {
+        [XmlAttribute]
+        public IdentificadorServicos Nome;
+
+        [XmlAttribute]
+        public VersaoServico Versao;
+
+        [XmlText]
+        public string Url;
+
+        public override string ToString()
         {
-            [XmlAttribute]
-            public IdentificadorServicos Nome;
-
-            [XmlAttribute]
-            public VersaoServico Versao;
-
-            [XmlText]
-            public string Url;
-
-            public override string ToString()
-            {
-                return Nome.ToString();
-            }
+            return Nome.ToString();
         }
     }
 }

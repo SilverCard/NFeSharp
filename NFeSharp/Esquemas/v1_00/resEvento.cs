@@ -12,7 +12,7 @@ namespace NFeSharp.Esquemas.v1_00
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     [XmlRootAttribute(Namespace = Namespaces.NFe, IsNullable = false)]
-    public partial class resEvento
+    public class resEvento
     {
 
         /// <summary>

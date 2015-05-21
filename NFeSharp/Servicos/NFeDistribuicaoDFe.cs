@@ -12,12 +12,10 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace NFeSharp.Servicos
-{
-    
+{    
     [WebServiceBinding(Name = "NFeDistribuicaoDFeSoap", Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe")]
-    internal class NFeDistribuicaoDFe : SoapHttpClientProtocol
-    {
-
+    public class NFeDistribuicaoDFe : SoapHttpClientProtocol
+    { 
         [SoapDocumentMethod("http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe/nfeDistDFeInteresse", RequestNamespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe", ResponseNamespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public System.Xml.XmlNode nfeDistDFeInteresse(System.Xml.XmlNode nfeDadosMsg)
         {

@@ -145,7 +145,7 @@ namespace NFeSharp.Esquemas.TiposBasicos
 
     [Serializable]
     [XmlType(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-    public partial class KeyInfoType
+    public class KeyInfoType
     {
         public X509DataType X509Data { get; set; }
 
@@ -157,7 +157,7 @@ namespace NFeSharp.Esquemas.TiposBasicos
 
     [Serializable]
     [XmlType(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-    public partial class X509DataType
+    public class X509DataType
     {
         [XmlElement(DataType = "base64Binary")]
         public byte[] X509Certificate { get; set; }
@@ -165,7 +165,7 @@ namespace NFeSharp.Esquemas.TiposBasicos
 
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-    public partial class SignedInfoTypeSignatureMethod
+    public class SignedInfoTypeSignatureMethod
     {
 
 

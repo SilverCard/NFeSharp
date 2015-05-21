@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\NFeSharp.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\NFeSharp.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Certificado.cs" />
     <Compile Include="Certificados.cs" />
+    <Compile Include="Esquemas\v3_10\TConsSitNFe.cs" />
+    <Compile Include="Esquemas\v3_10\TRetConsSitNFe.cs" />
     <Compile Include="Servicos\Autorizadores.cs" />
     <Compile Include="Esquemas\Namespaces.cs" />
     <Compile Include="Esquemas\TiposBasicos\TAmb.cs" />
@@ -53,18 +57,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Esquemas\v1_00\resEvento.cs" />
     <Compile Include="Servicos\ClienteNFe.cs" />
+    <Compile Include="Servicos\NfeConsulta2.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Servicos\NFeDistribuicaoDFe.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UnidadesFederativas2.cs" />
     <Compile Include="UnidadesFederativas.cs" />
     <Compile Include="Esquemas\v1_00\resNFe.cs" />
     <Compile Include="Esquemas\v1_00\retDistDFeInt.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <Compile Include="Utils\XmlUtils.cs" />
     <Compile Include="Servicos\VersaoServico.cs" />
+    <Compile Include="Esquemas\v1_00\procEventoNFe.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Esquemas\v2_00\" />
-    <Folder Include="Esquemas\v3_10\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

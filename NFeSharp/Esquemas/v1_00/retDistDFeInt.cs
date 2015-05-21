@@ -78,9 +78,7 @@ namespace NFeSharp.Esquemas.v1_00
     [Serializable]
     [XmlType(Namespace = Namespaces.NFe)]
     public enum TVerResNFe
-    {
-
-        
+    {        
         [XmlEnumAttribute("1.00")]
         v1_00,
     }        
@@ -101,7 +99,7 @@ namespace NFeSharp.Esquemas.v1_00
     /// </summary>
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
-    public partial class DocZip
+    public class DocZip
     {
 
         /// <summary>

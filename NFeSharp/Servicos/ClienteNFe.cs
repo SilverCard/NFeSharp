@@ -43,6 +43,18 @@ namespace NFeSharp.Servicos
             servico.ClientCertificates.Add(certificado.CertificadoInterno);
         }
 
+        public object NfeConsulta2(Certificado certificado, NFeSharp.Esquemas.v3_10.TConsSitNFe param)
+        {           
+            var ws = new NfeConsulta2();
+            ws.ClientCertificates.Add(certificado.CertificadoInterno);
+            ws.Cabecalho.cUF = NFeUtils.PegarCodigoUFChaveAcesso(param.chNFe);
+            ws.Cabecalho.versaoDados = "3.10";
+            ws.Url = this.PegarUrlServico(IdentificadorServicos.NfeConsultaProtocolo, (UnidadesFederativas)ws.Cabecalho.cUF, VersaoServico.v3_10, false);
+            var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v3_10.TConsSitNFe>(param);
+            var response = ws.nfeConsultaNF2(msg);
+            return XmlUtils.Deserialize<NFeSharp.Esquemas.v3_10.TRetConsSitNFe>(response);
+        }
+
         /// <summary>
         /// Pega a url do serviço para determinada UF.
         /// </summary>
