@@ -10,8 +10,8 @@ namespace NFeSharp.Esquemas.v1_00
     /// Schema do resultado do pedido de distribuição de DF-e de interesse
     /// </summary>
     [Serializable]
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    [XmlRootAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
+    [XmlRootAttribute(Namespace = Namespaces.NFe, IsNullable = false)]
     public class retDistDFeInt
     {
 
@@ -64,7 +64,7 @@ namespace NFeSharp.Esquemas.v1_00
     
     
     [Serializable]
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public enum resNFeCSitNFe
     {        
         [XmlEnumAttribute("1")]
@@ -76,7 +76,7 @@ namespace NFeSharp.Esquemas.v1_00
     
     
     [Serializable]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(Namespace = Namespaces.NFe)]
     public enum TVerResNFe
     {
 
@@ -86,8 +86,8 @@ namespace NFeSharp.Esquemas.v1_00
     }        
     
     
-    [Serializable]   
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class loteDistDFeInt
     {
         
@@ -99,8 +99,8 @@ namespace NFeSharp.Esquemas.v1_00
     /// <summary>
     /// Informação resumida ou documento fiscal eletrônico de interesse da pessoa ou empresa. O conteúdo desta tag estará compactado no padrão gZip. O tipo do campo é base64Binary.
     /// </summary>
-    [Serializable]   
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public partial class DocZip
     {
 

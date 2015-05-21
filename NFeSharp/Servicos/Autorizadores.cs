@@ -1,12 +1,12 @@
-﻿using System;
+﻿using NFeSharp.Servicos;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace NFeSharp
+namespace NFeSharp.Servicos
 {
-
     [Serializable]
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
@@ -62,10 +62,10 @@ namespace NFeSharp
         public class Servico
         {
             [XmlAttribute]
-            public IdentificadorWebService Nome;
+            public IdentificadorServicos Nome;
 
             [XmlAttribute]
-            public VersaoWebService Versao;
+            public VersaoServico Versao;
 
             [XmlText]
             public string Url;

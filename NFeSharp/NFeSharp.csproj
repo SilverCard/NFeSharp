@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,19 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Autorizadores.cs" />
+    <Compile Include="Certificado.cs" />
+    <Compile Include="Certificados.cs" />
+    <Compile Include="Servicos\Autorizadores.cs" />
+    <Compile Include="Esquemas\Namespaces.cs" />
     <Compile Include="Esquemas\TiposBasicos\TAmb.cs" />
     <Compile Include="Esquemas\TiposBasicos\TCOrgaoIBGE.cs" />
     <Compile Include="Esquemas\TiposBasicos\TipoDocumento.cs" />
     <Compile Include="Esquemas\TiposBasicos\XmldSig.cs" />
     <Compile Include="Esquemas\v1_00\distDFeInt.cs" />
-    <Compile Include="IdentificadorWebService.cs" />
+    <Compile Include="Servicos\IdentificadorServicos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Esquemas\v1_00\resEvento.cs" />
+    <Compile Include="Servicos\ClienteNFe.cs" />
+    <Compile Include="Servicos\NFeDistribuicaoDFe.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UnidadesFederativas.cs" />
     <Compile Include="Esquemas\v1_00\resNFe.cs" />
     <Compile Include="Esquemas\v1_00\retDistDFeInt.cs" />
-    <Compile Include="VersaoWebService.cs" />
+    <Compile Include="Utils\XmlUtils.cs" />
+    <Compile Include="Servicos\VersaoServico.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Esquemas\v2_00\" />

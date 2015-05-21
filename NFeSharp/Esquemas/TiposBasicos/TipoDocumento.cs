@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace NFeSharp.Esquemas.TiposBasicos
 {
     [Serializable]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe", IncludeInSchema = false)]
+    [XmlType(Namespace = Namespaces.NFe, IncludeInSchema = false)]
     public enum TipoDocumento
     {
 

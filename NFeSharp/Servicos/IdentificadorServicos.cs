@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NFeSharp
+namespace NFeSharp.Servicos
 {
-    public enum IdentificadorWebService
+    public enum IdentificadorServicos
     {
         NFeAutorizacao,
         NFeDistribuicaoDFe,

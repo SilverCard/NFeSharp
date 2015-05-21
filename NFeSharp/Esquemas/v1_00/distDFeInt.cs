@@ -10,8 +10,8 @@ namespace NFeSharp.Esquemas.v1_00
     /// Schema de pedido de distribuição de DF-e de interesse
     /// </summary>
     [Serializable]
-    [XmlType(AnonymousType=true, Namespace="http://www.portalfiscal.inf.br/nfe")]
-    [XmlRootAttribute(Namespace="http://www.portalfiscal.inf.br/nfe", IsNullable=false)]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
+    [XmlRootAttribute(Namespace = Namespaces.NFe, IsNullable = false)]
     public partial class distDFeInt
     {
         /// <summary>
@@ -48,7 +48,7 @@ namespace NFeSharp.Esquemas.v1_00
     /// Grupo para consultar um DF-e a partir de um NSU específico
     /// </summary>
     [Serializable]
-    [XmlType(AnonymousType=true, Namespace="http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public partial class consNSU {
         
         /// <summary>
@@ -62,8 +62,8 @@ namespace NFeSharp.Esquemas.v1_00
     /// <summary>
     /// Grupo para distribuir DF-e de interesse
     /// </summary>
-    [Serializable]   
-    [XmlType(AnonymousType=true, Namespace="http://www.portalfiscal.inf.br/nfe")]
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public partial class distNSU {
         
         /// <summary>
@@ -75,7 +75,7 @@ namespace NFeSharp.Esquemas.v1_00
     
     
     [Serializable]
-    [XmlType(Namespace="http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(Namespace = Namespaces.NFe)]
     public enum TVerDistDFe {        
         
         [XmlEnumAttribute("1.00")]

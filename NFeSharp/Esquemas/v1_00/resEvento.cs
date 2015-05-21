@@ -9,9 +9,9 @@ namespace NFeSharp.Esquemas.v1_00
     /// <summary>
     /// Schema da estrutura XML gerada pelo Ambiente Nacional com o conjunto de informações resumidas de um evento de NF-e
     /// </summary>
-    [Serializable]   
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    [XmlRootAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
+    [XmlRootAttribute(Namespace = Namespaces.NFe, IsNullable = false)]
     public partial class resEvento
     {
 
@@ -79,7 +79,7 @@ namespace NFeSharp.Esquemas.v1_00
     
     
     [Serializable]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(Namespace = Namespaces.NFe)]
     public enum TVerResEvento
     {        
         [XmlEnumAttribute("1.00")]

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace NFeSharp
+namespace NFeSharp.Servicos
 {
-    public enum VersaoWebService
+    public enum VersaoServico
     {
         [XmlEnum("1.00")]
         v1_00,

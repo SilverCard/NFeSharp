@@ -10,8 +10,8 @@ namespace NFeSharp.Esquemas.v1_00
     /// Schema da estrutura XML gerada pelo Ambiente Nacional com o conjunto de informações resumidas de uma NF-e
     /// </summary>
     [Serializable]
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    [XmlRootAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
+    [XmlRootAttribute(Namespace = Namespaces.NFe, IsNullable = false)]
     public class resNFe
     {
         /// <summary>
@@ -89,7 +89,7 @@ namespace NFeSharp.Esquemas.v1_00
         
     
     [Serializable]
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public enum resNFeTpNF
     {        
         [XmlEnumAttribute("0")]

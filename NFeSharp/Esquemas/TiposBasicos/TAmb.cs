@@ -12,7 +12,7 @@ namespace NFeSharp.Esquemas.TiposBasicos
     /// Identificação do Ambiente
     /// </summary>
     [Serializable]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(Namespace = Namespaces.NFe)]
     public enum TAmb
     {        
         [XmlEnumAttribute("1")]
