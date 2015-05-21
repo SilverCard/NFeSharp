@@ -63,7 +63,6 @@
     <Compile Include="Servicos\NFeDistribuicaoDFe.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UnidadesFederativas2.cs" />
     <Compile Include="UnidadesFederativas.cs" />
     <Compile Include="Esquemas\v1_00\resNFe.cs" />
     <Compile Include="Esquemas\v1_00\retDistDFeInt.cs" />

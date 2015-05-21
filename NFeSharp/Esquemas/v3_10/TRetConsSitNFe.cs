@@ -4,635 +4,359 @@ using System.Xml.Serialization;
 
 namespace NFeSharp.Esquemas.v3_10
 {
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    [System.Xml.Serialization.XmlRootAttribute("retConsSitNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public partial class TRetConsSitNFe
+    [Serializable]
+    [XmlType(Namespace = Namespaces.NFe)]
+    [XmlRoot("retConsSitNFe", Namespace = Namespaces.NFe, IsNullable = false)]
+    public class TRetConsSitNFe
     {
 
-        /// <remarks/>
-        public TAmb tpAmb;
+        public TAmb tpAmb { get; set; }
+        public string verAplic { get; set; }     
 
-        /// <remarks/>
-        public string verAplic;
+        /// <summary>
+        /// Código do resultado da solicitação, 100 = NFe autorizada, 101 = NFe Cancelada, 102 = NFe inutilizada, 110 = NFe denegada
+        /// </summary>
+        public string cStat { get; set; }
 
-        /// <remarks/>
-        public string cStat;
+        public string xMotivo { get; set; }
 
-        /// <remarks/>
-        public string xMotivo;
+        public UnidadesFederativas cUF { get; set; }
 
-        /// <remarks/>
-        public TCodUfIBGE cUF;
+        public DateTime dhRecbto { get; set; }
 
-        /// <remarks/>
-        public DateTime dhRecbto;
+        public string chNFe { get; set; }
 
-        /// <remarks/>
-        public string chNFe;
+        public TProtNFe protNFe { get; set; }
 
-        /// <remarks/>
-        public TProtNFe protNFe;
-
-        /// <remarks/>
-        public TRetCancNFe retCancNFe;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("procEventoNFe")]
-        public TProcEvento[] procEventoNFe;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public TVerConsSitNFe versao;
+        public TRetCancNFe retCancNFe { get; set; } 
+        
+        [XmlElement("procEventoNFe")]
+        public TProcEvento[] procEventoNFe { get; set; }  
+        
+        [XmlAttribute]
+        public TVerConsSitNFe versao { get; set; }     
     }
+    
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public enum TCodUfIBGE
-    {
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("11")]
-        Item11,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("12")]
-        Item12,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("13")]
-        Item13,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("14")]
-        Item14,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("15")]
-        Item15,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("16")]
-        Item16,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("17")]
-        Item17,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("21")]
-        Item21,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("22")]
-        Item22,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("23")]
-        Item23,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("24")]
-        Item24,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("25")]
-        Item25,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("26")]
-        Item26,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("27")]
-        Item27,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("28")]
-        Item28,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("29")]
-        Item29,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("31")]
-        Item31,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("32")]
-        Item32,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("33")]
-        Item33,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("35")]
-        Item35,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("41")]
-        Item41,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("42")]
-        Item42,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("43")]
-        Item43,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("50")]
-        Item50,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("51")]
-        Item51,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("52")]
-        Item52,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("53")]
-        Item53,
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [Serializable]
+    [XmlType(Namespace = Namespaces.NFe)]
     public class TProtNFe
     {
 
-        /// <remarks/>
-        public TProtNFeInfProt infProt;
+        public TProtNFeInfProt infProt { get; set; }   
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature;
+        
+        [XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature { get; set; }     
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string versao;
+        
+        [XmlAttribute]
+        public string versao { get; set; }     
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TProtNFeInfProt
     {
 
-        /// <remarks/>
-        public TAmb tpAmb;
 
-        /// <remarks/>
-        public string verAplic;
+        public TAmb tpAmb { get; set; }
 
-        /// <remarks/>
-        public string chNFe;
+        public string verAplic { get; set; }
 
-        /// <remarks/>
-        public DateTime dhRecbto;
 
-        /// <remarks/>
-        public string nProt;
+        public string chNFe { get; set; }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "base64Binary")]
-        public byte[] digVal;
+        public DateTime dhRecbto { get; set; }
 
-        /// <remarks/>
-        public string cStat;
+        public string nProt { get; set; }   
+        
+        [XmlElement(DataType = "base64Binary")]
+        public byte[] digVal { get; set; }
 
-        /// <remarks/>
-        public string xMotivo;
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "ID")]
-        public string Id;
+        public string cStat { get; set; }
+
+
+        public string xMotivo { get; set; }   
+
+        
+        [XmlAttribute(DataType = "ID")]
+        public string Id { get; set; }
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+
+
+    [XmlType(Namespace = Namespaces.NFe)]
     public class TRetEvento
     {
 
-        /// <remarks/>
-        public TRetEventoInfEvento infEvento;
+        
+        public TRetEventoInfEvento infEvento{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature;
+        
+        [XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string versao;
+        
+        [XmlAttribute()]
+        public string versao{get;set;}
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+
+
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TRetEventoInfEvento
     {
 
-        /// <remarks/>
-        public TAmb tpAmb;
+        
+        public TAmb tpAmb{get;set;}
 
-        /// <remarks/>
-        public string verAplic;
+        
+        public string verAplic{get;set;}
 
-        /// <remarks/>
-        public TCOrgaoIBGE cOrgao;
+        
+        public TCOrgaoIBGE cOrgao{get;set;}
 
-        /// <remarks/>
-        public string cStat;
+        
+        public string cStat{get;set;}
 
-        /// <remarks/>
-        public string xMotivo;
+        
+        public string xMotivo{get;set;}
 
-        /// <remarks/>
-        public string chNFe;
+        
+        public string chNFe{get;set;}
 
-        /// <remarks/>
-        public string tpEvento;
+        
+        public string tpEvento{get;set;}
 
-        /// <remarks/>
-        public string xEvento;
+        
+        public string xEvento{get;set;}
 
-        /// <remarks/>
-        public string nSeqEvento;
+        
+        public string nSeqEvento{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CNPJDest", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("CPFDest", typeof(string))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
-        public string Item;
+        
+        [XmlElementAttribute("CNPJDest", typeof(string))]
+        [XmlElementAttribute("CPFDest", typeof(string))]
+        [XmlChoiceIdentifierAttribute("ItemElementName")]
+        public string Item{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemChoiceType1 ItemElementName;
+        
+        [XmlIgnoreAttribute()]
+        public ItemChoiceType1 ItemElementName{get;set;}
 
-        /// <remarks/>
-        public string emailDest;
+        
+        public string emailDest{get;set;}
 
-        /// <remarks/>
-        public string dhRegEvento;
+        
+        public string dhRegEvento{get;set;}
 
-        /// <remarks/>
-        public string nProt;
+        
+        public string nProt{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "ID")]
-        public string Id;
+        
+        [XmlAttribute(DataType = "ID")]
+        public string Id{get;set;}
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public enum TCOrgaoIBGE
-    {
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("11")]
-        Item11,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("12")]
-        Item12,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("13")]
-        Item13,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("14")]
-        Item14,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("15")]
-        Item15,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("16")]
-        Item16,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("17")]
-        Item17,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("21")]
-        Item21,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("22")]
-        Item22,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("23")]
-        Item23,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("24")]
-        Item24,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("25")]
-        Item25,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("26")]
-        Item26,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("27")]
-        Item27,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("28")]
-        Item28,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("29")]
-        Item29,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("31")]
-        Item31,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("32")]
-        Item32,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("33")]
-        Item33,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("35")]
-        Item35,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("41")]
-        Item41,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("42")]
-        Item42,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("43")]
-        Item43,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("50")]
-        Item50,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("51")]
-        Item51,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("52")]
-        Item52,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("53")]
-        Item53,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("90")]
-        Item90,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("91")]
-        Item91,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("92")]
-        Item92,
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe", IncludeInSchema = false)]
+    
+    
+    
+    
+    
+    [Serializable]
+    [XmlType(Namespace = Namespaces.NFe, IncludeInSchema = false)]
     public enum ItemChoiceType1
     {
-
-        /// <remarks/>
-        CNPJDest,
-
-        /// <remarks/>
+        
+        CNPJDest,                
         CPFDest,
     }
 
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+
+
+    [XmlType(Namespace = Namespaces.NFe)]
     public partial class TEvento
     {
 
-        /// <remarks/>
-        public TEventoInfEvento infEvento;
+        
+        public TEventoInfEvento infEvento{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature;
+        
+        [XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string versao;
+        
+        [XmlAttribute()]
+        public string versao{get;set;}
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+
+
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public partial class TEventoInfEvento
     {
 
-        /// <remarks/>
-        public TCOrgaoIBGE cOrgao;
+        
+        public TCOrgaoIBGE cOrgao{get;set;}
 
-        /// <remarks/>
-        public TAmb tpAmb;
+        
+        public TAmb tpAmb{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CNPJ", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("CPF", typeof(string))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
-        public string Item;
+        
+        [XmlElementAttribute("CNPJ", typeof(string))]
+        [XmlElementAttribute("CPF", typeof(string))]
+        [XmlChoiceIdentifierAttribute("ItemElementName")]
+        public string Item{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemChoiceType ItemElementName;
+        
+        [XmlIgnoreAttribute()]
+        public ItemChoiceType ItemElementName{get;set;}
 
-        /// <remarks/>
-        public string chNFe;
+        
+        public string chNFe{get;set;}
 
-        /// <remarks/>
-        public DateTime dhEvento;
+        
+        public DateTime dhEvento{get;set;}
 
-        /// <remarks/>
-        public string tpEvento;
+        
+        public string tpEvento{get;set;}
 
-        /// <remarks/>
-        public string nSeqEvento;
+        
+        public string nSeqEvento{get;set;}
 
-        /// <remarks/>
-        public string verEvento;
+        
+        public string verEvento{get;set;}
 
-        /// <remarks/>
-        public TEventoInfEventoDetEvento detEvento;
+        
+        public TEventoInfEventoDetEvento detEvento{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "ID")]
-        public string Id;
+        
+        [XmlAttribute(DataType = "ID")]
+        public string Id{get;set;}
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe", IncludeInSchema = false)]
+    
+    
+    [Serializable]
+    [XmlType(Namespace = Namespaces.NFe, IncludeInSchema = false)]
     public enum ItemChoiceType
     {
 
-        /// <remarks/>
+        
         CNPJ,
 
-        /// <remarks/>
+        
         CPF,
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public partial class TEventoInfEventoDetEvento
     {
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAnyElementAttribute()]
-        public System.Xml.XmlElement[] Any;
+        
+        [XmlAnyElementAttribute()]
+        public System.Xml.XmlElement[] Any{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
-        public System.Xml.XmlAttribute[] AnyAttr;
+        
+        [XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr{get;set;}
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+    [XmlType(Namespace = Namespaces.NFe)]
     public partial class TProcEvento
     {
 
-        /// <remarks/>
-        public TEvento evento;
+        
+        public TEvento evento{get;set;}
 
-        /// <remarks/>
-        public TRetEvento retEvento;
+        
+        public TRetEvento retEvento{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string versao;
+        
+        [XmlAttribute()]
+        public string versao{get;set;}
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+    [XmlType(Namespace = Namespaces.NFe)]
     public partial class TRetCancNFe
     {
 
-        /// <remarks/>
-        public TRetCancNFeInfCanc infCanc;
+        
+        public TRetCancNFeInfCanc infCanc{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature;
+        
+        [XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public NFeSharp.Esquemas.TiposBasicos.SignatureType Signature{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string versao;
+        
+        [XmlAttribute()]
+        public string versao{get;set;}
     }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    
+    
+    [Serializable]
+    [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public partial class TRetCancNFeInfCanc
     {
 
-        /// <remarks/>
-        public TAmb tpAmb;
+        
+        public TAmb tpAmb{get;set;}
 
-        /// <remarks/>
-        public string verAplic;
+        
+        public string verAplic{get;set;}
 
-        /// <remarks/>
-        public string cStat;
+        
+        public string cStat{get;set;}
 
-        /// <remarks/>
-        public string xMotivo;
+        
+        public string xMotivo{get;set;}
 
-        /// <remarks/>
-        public TCodUfIBGE cUF;
+        
+        public UnidadesFederativas cUF{get;set;}
 
-        /// <remarks/>
-        public string chNFe;
+        
+        public string chNFe{get;set;}
 
-        /// <remarks/>
-        public System.DateTime dhRecbto;
+        
+        public System.DateTime dhRecbto{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool dhRecbtoSpecified;
+        
+        [XmlIgnoreAttribute()]
+        public bool dhRecbtoSpecified{get;set;}
 
-        /// <remarks/>
-        public string nProt;
+        
+        public string nProt{get;set;}
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "ID")]
-        public string Id;
+        
+        [XmlAttribute(DataType = "ID")]
+        public string Id{get;set;}
     }
 
 

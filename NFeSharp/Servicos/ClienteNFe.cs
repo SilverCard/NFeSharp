@@ -1,4 +1,5 @@
-﻿using NFeSharp.Utils;
+﻿using NFeSharp.Esquemas.TiposBasicos;
+using NFeSharp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,11 +15,13 @@ namespace NFeSharp.Servicos
     {
         public Certificados Certificados { get; private set; }
         public Autorizadores Autorizadores { get; private set; }
+        public TAmb TipoAmbiente { get; private set; }
 
-        public ClienteNFe(Certificados certificados, Autorizadores autorizadores)
+        public ClienteNFe(Certificados certificados, Autorizadores autorizadores, TAmb tipoAmbiente)
         {
             Certificados = certificados;
             Autorizadores = autorizadores;
+            TipoAmbiente = tipoAmbiente;
         }
 
         public NFeSharp.Esquemas.v1_00.retDistDFeInt nfeDistDFeInteresse(NFeSharp.Esquemas.v1_00.distDFeInt param)
@@ -43,10 +46,13 @@ namespace NFeSharp.Servicos
             servico.ClientCertificates.Add(certificado.CertificadoInterno);
         }
 
-        public object NfeConsulta2(Certificado certificado, NFeSharp.Esquemas.v3_10.TConsSitNFe param)
-        {           
+        public NFeSharp.Esquemas.v3_10.TRetConsSitNFe NfeConsulta2(String chaveAcesso)
+        {
+            NFeSharp.Esquemas.v3_10.TConsSitNFe param = new NFeSharp.Esquemas.v3_10.TConsSitNFe();
+            param.chNFe = chaveAcesso;
+            param.tpAmb = this.TipoAmbiente;
             var ws = new NfeConsulta2();
-            ws.ClientCertificates.Add(certificado.CertificadoInterno);
+            ws.ClientCertificates.Add(Certificados.PegarPrimeiroCertificado().CertificadoInterno);
             ws.Cabecalho.cUF = NFeUtils.PegarCodigoUFChaveAcesso(param.chNFe);
             ws.Cabecalho.versaoDados = "3.10";
             ws.Url = this.PegarUrlServico(IdentificadorServicos.NfeConsultaProtocolo, (UnidadesFederativas)ws.Cabecalho.cUF, VersaoServico.v3_10, false);

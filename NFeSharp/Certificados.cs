@@ -54,5 +54,20 @@ namespace NFeSharp
             }
         }
 
+        public Certificado PegarPrimeiroCertificado()
+        {
+            lock (_LockObject)
+            {
+                var certificado = this._ColecaoCertificados.FirstOrDefault();
+
+                if(certificado == null)
+                {
+                    throw new Exception("Nenhum certificado encontrado.");
+                }
+
+                return certificado;
+            }
+        }
+
     }
 }
