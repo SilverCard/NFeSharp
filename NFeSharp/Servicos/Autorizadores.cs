@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 namespace NFeSharp.Servicos
 {
+    /// <summary>
+    /// Coleção de autorizadores da NFe
+    /// </summary>
     [Serializable]
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
@@ -14,6 +17,7 @@ namespace NFeSharp.Servicos
     {
         [XmlElement("Autorizador", Form = XmlSchemaForm.Unqualified)]
         public Autorizador[] ColecaoAutorizadores { get; set; }
+
 
         public static Autorizadores LerDeArquivo(String caminho)
         {
@@ -29,7 +33,9 @@ namespace NFeSharp.Servicos
         }
     }
 
-
+    /// <summary>
+    /// Autorizador da NFe
+    /// </summary>
     [Serializable]
     [XmlType(AnonymousType = true)]
     public class Autorizador

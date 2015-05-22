@@ -11,51 +11,51 @@ using System.Web.Services.Protocols;
 
 namespace NFeSharp.Servicos
 {
+    /// <summary>
+    /// Essa classe fornece acesso ao serviços dos autorizadores
+    /// </summary>
     public class ClienteNFe
     {
-        public Certificados Certificados { get; private set; }
+        public X509Certificate Certificado { get; private set; }
         public Autorizadores Autorizadores { get; private set; }
         public TAmb TipoAmbiente { get; private set; }
 
-        public ClienteNFe(Certificados certificados, Autorizadores autorizadores, TAmb tipoAmbiente)
+        public ClienteNFe(X509Certificate certificado, Autorizadores autorizadores, TAmb tipoAmbiente)
         {
-            Certificados = certificados;
+            if (certificado == null)
+            {
+                throw new ArgumentNullException("certificado");
+            }
+
+            if(autorizadores == null)
+            {
+                throw new ArgumentNullException("autorizadores");
+            }
+
+            Certificado = certificado;
             Autorizadores = autorizadores;
             TipoAmbiente = tipoAmbiente;
         }
 
         public NFeSharp.Esquemas.v1_00.retDistDFeInt nfeDistDFeInteresse(NFeSharp.Esquemas.v1_00.distDFeInt param)
-        {            
-            var ws = new NFeDistribuicaoDFe();
-            AdicionarCertificadoServico(ws, param.CnpjCpf);
-            ws.Url = this.PegarUrlServico(IdentificadorServicos.NFeDistribuicaoDFe, (UnidadesFederativas)param.cUFAutor, VersaoServico.v1_00, false);
+        {   
+            String url = this.PegarUrlServico(IdentificadorServicos.NFeDistribuicaoDFe, (UnidadesFederativas)param.cUFAutor, VersaoServico.v1_00, false);
+            var ws = new NFeDistribuicaoDFe(url, Certificado);
             var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v1_00.distDFeInt>(param);
             var response = ws.nfeDistDFeInteresse(msg);
             return XmlUtils.Deserialize<NFeSharp.Esquemas.v1_00.retDistDFeInt>(response);
         }
 
-        private void AdicionarCertificadoServico(SoapHttpClientProtocol servico, String nDocumento)
-        {
-            Certificado certificado = Certificados.PegarCertificado(nDocumento);
-
-            if(certificado == null)
-            {
-                throw new Exception(String.Format("Nenhuma certificado encontrado para {0}.", nDocumento));
-            }
-
-            servico.ClientCertificates.Add(certificado.CertificadoInterno);
-        }
-
         public NFeSharp.Esquemas.v3_10.retConsSitNFe NfeConsulta2(String chaveAcesso)
         {
+            int cUF = NFeUtils.PegarCodigoUFChaveAcesso(chaveAcesso);
+            String url = this.PegarUrlServico(IdentificadorServicos.NfeConsultaProtocolo, (UnidadesFederativas)cUF, VersaoServico.v3_10, false);
             NFeSharp.Esquemas.v3_10.consSitNFe param = new NFeSharp.Esquemas.v3_10.consSitNFe();
             param.chNFe = chaveAcesso;
             param.tpAmb = this.TipoAmbiente;
-            var ws = new NfeConsulta2();
-            ws.ClientCertificates.Add(Certificados.PegarPrimeiroCertificado().CertificadoInterno);
-            ws.Cabecalho.cUF = NFeUtils.PegarCodigoUFChaveAcesso(param.chNFe);
+            var ws = new NfeConsulta2(url, Certificado);
+            ws.Cabecalho.cUF = cUF;
             ws.Cabecalho.versaoDados = "3.10";
-            ws.Url = this.PegarUrlServico(IdentificadorServicos.NfeConsultaProtocolo, (UnidadesFederativas)ws.Cabecalho.cUF, VersaoServico.v3_10, false);
             var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v3_10.consSitNFe>(param);
             var response = ws.nfeConsultaNF2(msg);
             return XmlUtils.Deserialize<NFeSharp.Esquemas.v3_10.retConsSitNFe>(response);
@@ -76,7 +76,7 @@ namespace NFeSharp.Servicos
 
             if (autorizador == null)
             {
-                throw new Exception("Nenhum autorizador encontrado.");
+                throw new Exception(String.Format("Nenhum autorizador encontrado para o serviço \"{0}\" {1} na UF \"{2}\".", servico, versaoServico, uf ));
             }
 
             var ws = autorizador.Servicos.FirstOrDefault(x => x.Nome == servico && x.Versao == versaoServico);

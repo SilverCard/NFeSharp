@@ -11,6 +11,9 @@ using System.Xml.Serialization;
 
 namespace NFeSharp.Utils
 {
+    /// <summary>
+    /// Classe com com utilizades relacionados a Xml
+    /// </summary>
     public static class XmlUtils
     {
         /// <summary>
@@ -28,6 +31,12 @@ namespace NFeSharp.Utils
         /// </summary>
         private const String SchemaRegex = @"(?<Tipo>[^_]{1,})_v(?<Versao>\d+\.\d{2})\.xsd";
 
+        /// <summary>
+        /// Serializa um objeto para Xml
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="obj">Objeto</param>
+        /// <returns>Xml serializado</returns>
         public static XmlNode SerializeToXml<T>(T obj)
         {
             var doc = new XmlDocument();
@@ -50,6 +59,12 @@ namespace NFeSharp.Utils
             return doc;
         }
 
+        /// <summary>
+        /// Deserializa um xml para objeto
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="node">Xml</param>
+        /// <returns>Objeto deserializado</returns>
         public static T Deserialize<T>(XmlNode node)
         {
             var ser = new XmlSerializer(typeof(T));
@@ -61,6 +76,11 @@ namespace NFeSharp.Utils
             return result;
         }
 
+        /// <summary>
+        /// Pega o tipo do DocZip
+        /// </summary>
+        /// <param name="docZip">DocZip</param>
+        /// <returns>Tipo</returns>
         public static Type PegarTipoConteudoDocZip(NFeSharp.Esquemas.v1_00.DocZip docZip)
         {
             Match match = Regex.Match(docZip.schema, SchemaRegex);
@@ -77,6 +97,11 @@ namespace NFeSharp.Utils
             return null;
         }
 
+        /// <summary>
+        /// Decodifica e descompacta o centúdo do DocZip
+        /// </summary>
+        /// <param name="docZip">DocZip</param>
+        /// <returns>Conteúdo desserializado</returns>
         public static Object LerConteudoDocZip(NFeSharp.Esquemas.v1_00.DocZip docZip)
         {
             XmlDocument doc = new XmlDocument();

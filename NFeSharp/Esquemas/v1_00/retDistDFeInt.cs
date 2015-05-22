@@ -28,7 +28,7 @@ namespace NFeSharp.Esquemas.v1_00
         /// <summary>
         /// Código do status de processamento da requisição
         /// </summary>
-        public string cStat { get; set; }
+        public int cStat { get; set; }
 
         /// <summary>
         /// Descrição literal do status do processamento da requisição

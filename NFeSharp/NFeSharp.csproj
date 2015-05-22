@@ -43,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Certificado.cs" />
-    <Compile Include="Certificados.cs" />
     <Compile Include="Esquemas\v3_10\consSitNFe.cs" />
     <Compile Include="Esquemas\v3_10\retConsSitNFe.cs" />
     <Compile Include="Esquemas\v3_10\nfeProc.cs" />
@@ -63,6 +61,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Servicos\NFeDistribuicaoDFe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Servicos\ServicoBase.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UnidadesFederativas.cs" />
