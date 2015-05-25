@@ -15,11 +15,11 @@ namespace NFeSharp.Servicos.Proxies
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [MessageContractAttribute(IsWrapped = false)]
-    public partial class nfeConsultaNFRequest
+    public class nfeConsultaNFRequest
     {
 
         [MessageHeader(Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta3")]
-        public NfeConsulta3Client.nfeCabecMsg nfeCabecMsg;
+        public nfeCabecMsg nfeCabecMsg;
 
         [System.ServiceModel.MessageBodyMemberAttribute]
         public System.Xml.XmlNode nfeDadosMsg;
@@ -28,14 +28,14 @@ namespace NFeSharp.Servicos.Proxies
         {
         }
 
-        public nfeConsultaNFRequest(NfeConsulta3Client.nfeCabecMsg nfeCabecMsg, System.Xml.XmlNode nfeDadosMsg)
+        public nfeConsultaNFRequest(nfeCabecMsg nfeCabecMsg, System.Xml.XmlNode nfeDadosMsg)
         {
             this.nfeCabecMsg = nfeCabecMsg;
             this.nfeDadosMsg = nfeDadosMsg;
         }
 
         public nfeConsultaNFRequest(String cUf, String vDados, XmlNode nfeDadosMsg)
-            : this(new NfeConsulta3Client.nfeCabecMsg(cUf, vDados), nfeDadosMsg)
+            : this(new nfeCabecMsg(cUf, vDados, NfeConsulta3Client.Namespace), nfeDadosMsg)
         {
         }
     }
@@ -48,7 +48,7 @@ namespace NFeSharp.Servicos.Proxies
     {
 
         [MessageHeader(Namespace="http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta3")]
-        public NfeConsulta3Client.nfeCabecMsg nfeCabecMsg;
+        public nfeCabecMsg nfeCabecMsg;
 
         [MessageBodyMember]
         public System.Xml.XmlNode nfeConsultaNFResult;
@@ -57,7 +57,7 @@ namespace NFeSharp.Servicos.Proxies
         {
         }
 
-        public nfeConsultaNFResponse(NfeConsulta3Client.nfeCabecMsg nfeCabecMsg, System.Xml.XmlNode nfeConsultaNFResult)
+        public nfeConsultaNFResponse(nfeCabecMsg nfeCabecMsg, System.Xml.XmlNode nfeConsultaNFResult)
         {
             this.nfeCabecMsg = nfeCabecMsg;
             this.nfeConsultaNFResult = nfeConsultaNFResult;
@@ -66,6 +66,8 @@ namespace NFeSharp.Servicos.Proxies
 
     public class NfeConsulta3Client : ClientBase<INfeConsulta3>, INfeConsulta3, INfeConsultaProtocoloCliente
     {
+        public const String Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta2";
+
         public NfeConsulta3Client(X509Certificate2 certificado, String url)
             : base(new WSHttpBinding( SecurityMode.Transport ) , new EndpointAddress(url))
         {
@@ -93,59 +95,8 @@ namespace NFeSharp.Servicos.Proxies
         {
             var resposta = await nfeConsultaNFAsync(new nfeConsultaNFRequest(cUf, vDados, nfeDadosMsg));
             return resposta.nfeConsultaNFResult;
-        }
-        
-
-        /// <remarks/>
-
-       // [Serializable]
-       // [XmlType(Namespace="http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta3", AnonymousType = true)]
-        public class nfeCabecMsg : MessageHeader
-        {
+        }       
 
 
-            public nfeCabecMsg()
-            {
-
-            }
-
-            /// <remarks/>
-          //  [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
-            public string cUF { get; set; }
-
-
-            public nfeCabecMsg(String cUf, String vDados)
-            {
-                cUF = cUf;
-                versaoDados = vDados;
-            }
-
-            /// <remarks/>
-           // [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
-            public string versaoDados { get; set; }
-            
-
-
-            protected override void OnWriteHeaderContents(XmlDictionaryWriter writer, MessageVersion messageVersion)
-            {
-                Console.WriteLine("lol");
-                writer.WriteElementString("versaoDadoss", versaoDados);
-            }
-
-            protected override void OnWriteStartHeader(XmlDictionaryWriter writer, MessageVersion messageVersion)
-            {
-                writer.WriteElementString("versaoDadoss", versaoDados);
-            }
-
-            public override string Name
-            {
-                get { return "nfeCabecMsg"; }
-            }
-
-            public override string Namespace
-            {
-                get { return "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta3"; }
-            }
-        }
     }
 }

@@ -15,7 +15,7 @@ namespace NFeSharp.Servicos.Proxies
     public class nfeConsultaNF2Request
     {      
         [MessageHeader]
-        public NfeConsulta2Client.nfeCabecMsg nfeCabecMsg;
+        public nfeCabecMsg nfeCabecMsg;
 
       
         [MessageBodyMember]
@@ -25,14 +25,14 @@ namespace NFeSharp.Servicos.Proxies
         {
         }
 
-        public nfeConsultaNF2Request(NfeConsulta2Client.nfeCabecMsg nfeCabecMsg, XmlNode nfeDadosMsg)
+        public nfeConsultaNF2Request(nfeCabecMsg nfeCabecMsg, XmlNode nfeDadosMsg)
         {
             this.nfeCabecMsg = nfeCabecMsg;
             this.nfeDadosMsg = nfeDadosMsg;
         }
 
         public nfeConsultaNF2Request(String cUf, String vDados, XmlNode nfeDadosMsg)
-            : this(new NfeConsulta2Client.nfeCabecMsg(cUf, vDados), nfeDadosMsg)
+            : this(new nfeCabecMsg(cUf, vDados, NfeConsulta2Client.Namespace), nfeDadosMsg)
         {
         }
     }
@@ -42,7 +42,7 @@ namespace NFeSharp.Servicos.Proxies
     {
 
         [MessageHeader]
-        public NfeConsulta2Client.nfeCabecMsg nfeCabecMsg;
+        public nfeCabecMsg nfeCabecMsg;
 
         [MessageBodyMember]
         public XmlNode nfeConsultaNF2Result;
@@ -51,7 +51,7 @@ namespace NFeSharp.Servicos.Proxies
         {
         }
 
-        public nfeConsultaNF2Response(NfeConsulta2Client.nfeCabecMsg nfeCabecMsg, XmlNode nfeConsultaNF2Result)
+        public nfeConsultaNF2Response(nfeCabecMsg nfeCabecMsg, XmlNode nfeConsultaNF2Result)
         {
             this.nfeCabecMsg = nfeCabecMsg;
             this.nfeConsultaNF2Result = nfeConsultaNF2Result;
@@ -60,8 +60,10 @@ namespace NFeSharp.Servicos.Proxies
 
     public class NfeConsulta2Client : ClientBase<INfeConsulta2>, INfeConsulta2, INfeConsultaProtocoloCliente
     {
+        public const String Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta2";
+
         public NfeConsulta2Client(X509Certificate2 certificado, String url)
-            : base(new BasicHttpBinding( BasicHttpSecurityMode.Transport) , new EndpointAddress(url))
+            : base(new BasicHttpBinding(BasicHttpSecurityMode.Transport), new EndpointAddress(url))
         {
             this.ClientCredentials.ClientCertificate.Certificate = certificado;
             var binding = this.Endpoint.Binding as BasicHttpBinding;
@@ -84,26 +86,7 @@ namespace NFeSharp.Servicos.Proxies
             var resposta = await nfeConsultaNF2Async(new nfeConsultaNF2Request(cUf, vDados, nfeDadosMsg));
             return resposta.nfeConsultaNF2Result;
         }
-
-        [Serializable]
-        public class nfeCabecMsg
-        {
-
-            [XmlElement(Order = 0)]
-            public string cUF { get; set; }
-
-            [XmlElement(Order = 1)]
-            public string versaoDados { get; set; }
-
-            public nfeCabecMsg(String cUf, String vDados)
-            {
-                cUF = cUf;
-                versaoDados = vDados;
-            }
-
-            public nfeCabecMsg()
-            {
-            }
-        }
     }
+
+
 }
