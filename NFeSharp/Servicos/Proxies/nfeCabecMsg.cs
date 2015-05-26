@@ -15,11 +15,30 @@ namespace NFeSharp.Servicos.Proxies
 
         public nfeCabecMsg() { }
 
-        public nfeCabecMsg(string _cUF, string _versaoDados, string _namspace)
+        public nfeCabecMsg(string _namspace)
         {
+            if (String.IsNullOrWhiteSpace(_namspace))
+            {
+                throw new ArgumentNullException("_namspace");
+            }
+
+            this._Namespace = _namspace;
+        }
+
+        public nfeCabecMsg(string _cUF, string _versaoDados, string _namspace)
+            : this(_namspace)
+        {
+            if(String.IsNullOrWhiteSpace(_cUF))
+            {
+                throw new ArgumentNullException("_cUF");
+            }
+            if (String.IsNullOrWhiteSpace(_versaoDados))
+            {
+                throw new ArgumentNullException("_versaoDados");
+            }
+
             this.cUF = _cUF;
             this.versaoDados = _versaoDados;
-            this._Namespace = _namspace;
         }
 
         protected override void OnWriteHeaderContents(System.Xml.XmlDictionaryWriter writer, MessageVersion messageVersion)

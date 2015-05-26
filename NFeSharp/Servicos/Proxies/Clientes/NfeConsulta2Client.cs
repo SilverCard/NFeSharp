@@ -16,24 +16,14 @@ namespace NFeSharp.Servicos.Proxies
     {      
         [MessageHeader]
         public nfeCabecMsg nfeCabecMsg;
-
       
         [MessageBodyMember]
         public XmlNode nfeDadosMsg;
 
-        public nfeConsultaNF2Request()
+        public nfeConsultaNF2Request(String cUf, String vDados, XmlNode nfeDadosMsg, String _namespace)
         {
-        }
-
-        public nfeConsultaNF2Request(nfeCabecMsg nfeCabecMsg, XmlNode nfeDadosMsg)
-        {
-            this.nfeCabecMsg = nfeCabecMsg;
+            this.nfeCabecMsg = new nfeCabecMsg(cUf, vDados, _namespace);
             this.nfeDadosMsg = nfeDadosMsg;
-        }
-
-        public nfeConsultaNF2Request(String cUf, String vDados, XmlNode nfeDadosMsg)
-            : this(new nfeCabecMsg(cUf, vDados, NfeConsulta2Client.Namespace), nfeDadosMsg)
-        {
         }
     }
 
@@ -46,28 +36,15 @@ namespace NFeSharp.Servicos.Proxies
 
         [MessageBodyMember]
         public XmlNode nfeConsultaNF2Result;
-
-        public nfeConsultaNF2Response()
-        {
-        }
-
-        public nfeConsultaNF2Response(nfeCabecMsg nfeCabecMsg, XmlNode nfeConsultaNF2Result)
-        {
-            this.nfeCabecMsg = nfeCabecMsg;
-            this.nfeConsultaNF2Result = nfeConsultaNF2Result;
-        }
     }
 
-    public class NfeConsulta2Client : ClientBase<INfeConsulta2>, INfeConsulta2, INfeConsultaProtocoloCliente
+    public class NfeConsulta2Client : ClienteBase<INfeConsulta2>, INfeConsulta2, INfeConsultaProtocoloCliente
     {
         public const String Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta2";
 
         public NfeConsulta2Client(X509Certificate2 certificado, String url)
-            : base(new BasicHttpBinding(BasicHttpSecurityMode.Transport), new EndpointAddress(url))
+            : base( VersaoSoap.v1_1, certificado, url )
         {
-            this.ClientCredentials.ClientCertificate.Certificate = certificado;
-            var binding = this.Endpoint.Binding as BasicHttpBinding;
-            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Certificate;
         }
 
 
@@ -81,9 +58,9 @@ namespace NFeSharp.Servicos.Proxies
             return base.Channel.nfeConsultaNF2Async(request);
         }
 
-        public async Task<XmlNode> ConsultarProtocolo(String cUf, String vDados, XmlNode nfeDadosMsg)
+        public async Task<XmlNode> ConsultarProtocoloAsync(String cUf, String vDados, XmlNode nfeDadosMsg)
         {
-            var resposta = await nfeConsultaNF2Async(new nfeConsultaNF2Request(cUf, vDados, nfeDadosMsg));
+            var resposta = await nfeConsultaNF2Async(new nfeConsultaNF2Request(cUf, vDados, nfeDadosMsg, NfeConsulta2Client.Namespace));
             return resposta.nfeConsultaNF2Result;
         }
     }

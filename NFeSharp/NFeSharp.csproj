@@ -55,6 +55,7 @@
     <Compile Include="Esquemas\TiposBasicos\TipoDocumento.cs" />
     <Compile Include="Esquemas\TiposBasicos\XmldSig.cs" />
     <Compile Include="Esquemas\v1_00\distDFeInt.cs" />
+    <Compile Include="Servicos\Proxies\ClienteBase.cs" />
     <Compile Include="Servicos\IdentificadorServicos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Esquemas\v1_00\resEvento.cs" />
@@ -65,6 +66,8 @@
     <Compile Include="Servicos\NFeDistribuicaoDFe.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Servicos\Proxies\Comportamentos\nfeCabecMsgFixer.cs" />
+    <Compile Include="Servicos\Proxies\Comportamentos\nfeCabecMsgFixerBehavior.cs" />
     <Compile Include="Servicos\Proxies\ServiceContracts\INfeConsulta2.cs" />
     <Compile Include="Servicos\Proxies\ServiceContracts\INfeConsulta3.cs" />
     <Compile Include="Servicos\Proxies\Interfaces\INfeConsultaProtocoloCliente.cs" />

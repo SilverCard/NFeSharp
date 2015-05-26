@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace NFeSharp.Servicos.Proxies
 {
-
     [ServiceContract(Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta2")]
     public interface INfeConsulta2
     {
@@ -19,5 +18,4 @@ namespace NFeSharp.Servicos.Proxies
         [OperationContract(Action = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta2/nfeConsultaNF2", ReplyAction = "*")]
         Task<nfeConsultaNF2Response> nfeConsultaNF2Async(nfeConsultaNF2Request request);
     }
-
 }

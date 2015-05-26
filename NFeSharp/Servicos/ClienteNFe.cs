@@ -1,4 +1,5 @@
 ﻿using NFeSharp.Esquemas.TiposBasicos;
+using NFeSharp.Servicos.Proxies;
 using NFeSharp.Utils;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,11 @@ namespace NFeSharp.Servicos
     /// </summary>
     public class ClienteNFe
     {
-        public X509Certificate Certificado { get; private set; }
+        public X509Certificate2 Certificado { get; private set; }
         public Autorizadores Autorizadores { get; private set; }
         public TAmb TipoAmbiente { get; private set; }
 
-        public ClienteNFe(X509Certificate certificado, Autorizadores autorizadores, TAmb tipoAmbiente)
+        public ClienteNFe(X509Certificate2 certificado, Autorizadores autorizadores, TAmb tipoAmbiente)
         {
             if (certificado == null)
             {
@@ -44,6 +45,37 @@ namespace NFeSharp.Servicos
             var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v1_00.distDFeInt>(param);
             var response = ws.nfeDistDFeInteresse(msg);
             return XmlUtils.Deserialize<NFeSharp.Esquemas.v1_00.retDistDFeInt>(response);
+        }
+        
+
+        public async Task<NFeSharp.Esquemas.v3_10.retConsSitNFe> NfeConsultaProtocoloAsync(String chaveAcesso)
+        {
+            int cUF = NFeUtils.PegarCodigoUFChaveAcesso(chaveAcesso);
+            String url = this.PegarUrlServico(IdentificadorServicos.NfeConsultaProtocolo, (UnidadesFederativas)cUF, VersaoServico.v3_10, false);
+            INfeConsultaProtocoloCliente cliente;
+
+            if(cUF == 41)
+            {
+                cliente = new Proxies.NfeConsulta3Client(this.Certificado, url);
+            }
+            else
+            {
+                cliente = new Proxies.NfeConsulta2Client(this.Certificado, url);
+            }
+            
+
+            NFeSharp.Esquemas.v3_10.consSitNFe param = new NFeSharp.Esquemas.v3_10.consSitNFe();
+            param.chNFe = chaveAcesso;
+            param.tpAmb = this.TipoAmbiente;
+            var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v3_10.consSitNFe>(param);
+            var respostaXml =  await cliente.ConsultarProtocoloAsync(cUF.ToString(), "3.10", msg);
+
+            if (respostaXml == null)
+            {
+                throw new Exception("A resposta do serviço não foi entendida.");
+            }
+
+            return XmlUtils.Deserialize<NFeSharp.Esquemas.v3_10.retConsSitNFe>(respostaXml);
         }
 
         public NFeSharp.Esquemas.v3_10.retConsSitNFe NfeConsulta2(String chaveAcesso)

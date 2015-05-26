@@ -9,6 +9,6 @@ namespace NFeSharp.Servicos.Proxies
 {
     public interface INfeConsultaProtocoloCliente
     {
-        Task<XmlNode> ConsultarProtocolo(String cUf, String vDados, XmlNode nfeDadosMsg);
+        Task<XmlNode> ConsultarProtocoloAsync(String cUf, String vDados, XmlNode nfeDadosMsg);
     }
 }
