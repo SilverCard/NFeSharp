@@ -9,8 +9,7 @@ using System.Xml;
 
 namespace NFeSharp.Servicos.Proxies
 {
-
-   [MessageContract(IsWrapped = true, WrapperName = "nfeDistDFeInteresse", WrapperNamespace = NFeDistribuicaoDFeCliente.Namespace)]
+    [MessageContract(IsWrapped = true, WrapperName = "nfeDistDFeInteresse", WrapperNamespace = NFeDistribuicaoDFeCliente.Namespace)]
     public partial class nfeDistDFeInteresseRequest
     {
         [MessageBodyMember]

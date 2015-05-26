@@ -10,7 +10,6 @@ using System.Xml.Serialization;
 
 namespace NFeSharp.Servicos.Proxies
 {
-
     [MessageContract(IsWrapped = false)]
     public class nfeConsultaNF2Request
     {      
@@ -30,7 +29,6 @@ namespace NFeSharp.Servicos.Proxies
     [MessageContract(IsWrapped = false)]
     public class nfeConsultaNF2Response
     {
-
         [MessageHeader]
         public nfeCabecMsg nfeCabecMsg;
 

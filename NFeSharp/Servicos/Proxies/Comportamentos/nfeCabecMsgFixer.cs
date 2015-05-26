@@ -12,7 +12,6 @@ namespace NFeSharp.Servicos.Proxies
 {
     internal class nfeCabecMsgFixer : IClientMessageInspector
     {
-
         public static String SelectNodeTextByName(XmlDocument d, String name)
         {
             var node = d.DocumentElement.SelectSingleNode(String.Format("//*[local-name()='{0}']", name));

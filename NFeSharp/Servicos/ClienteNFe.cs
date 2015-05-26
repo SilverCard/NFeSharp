@@ -40,6 +40,11 @@ namespace NFeSharp.Servicos
 
         public async Task<NFeSharp.Esquemas.v1_00.retDistDFeInt> NFeDistribuicaoDFeAsync(NFeSharp.Esquemas.v1_00.distDFeInt param)
         {
+            if(param == null)
+            {
+                throw new ArgumentNullException("param");
+            }
+
             String url = this.PegarUrlServico(IdentificadorServicos.NFeDistribuicaoDFe, (UnidadesFederativas)param.cUFAutor, VersaoServico.v1_00, false);
             var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v1_00.distDFeInt>(param);
             var request = new nfeDistDFeInteresseRequest()
@@ -60,10 +65,16 @@ namespace NFeSharp.Servicos
 
         public async Task<NFeSharp.Esquemas.v3_10.retConsSitNFe> NfeConsultaProtocoloAsync(String chaveAcesso)
         {
+            if(!NFeUtils.IsChaveAcessoValida(chaveAcesso))
+            {
+                throw new  ArgumentException("chaveAcesso", "A Chave de Acesso é inválida");
+            }
+
             int cUF = NFeUtils.PegarCodigoUFChaveAcesso(chaveAcesso);
             String url = this.PegarUrlServico(IdentificadorServicos.NfeConsultaProtocolo, (UnidadesFederativas)cUF, VersaoServico.v3_10, false);
             INfeConsultaProtocoloCliente cliente;
 
+            // Correção para SEFAZ do PR.
             if(cUF == 41)
             {
                 cliente = new Proxies.NfeConsulta3Client(this.Certificado, url);
@@ -71,12 +82,15 @@ namespace NFeSharp.Servicos
             else
             {
                 cliente = new Proxies.NfeConsulta2Client(this.Certificado, url);
-            }          
-            
+            }
 
-            NFeSharp.Esquemas.v3_10.consSitNFe param = new NFeSharp.Esquemas.v3_10.consSitNFe();
-            param.chNFe = chaveAcesso;
-            param.tpAmb = this.TipoAmbiente;
+
+            NFeSharp.Esquemas.v3_10.consSitNFe param = new NFeSharp.Esquemas.v3_10.consSitNFe()
+            {
+                chNFe = chaveAcesso,
+                tpAmb = this.TipoAmbiente
+            };
+
             var msg = XmlUtils.SerializeToXml<NFeSharp.Esquemas.v3_10.consSitNFe>(param);
             var respostaXml =  await cliente.ConsultarProtocoloAsync(cUF.ToString(), "3.10", msg);
             cliente.Close();
