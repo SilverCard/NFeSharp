@@ -12,6 +12,9 @@ namespace NFeSharp.Servicos
 {
     public abstract class ClienteBase<TChannel> : ClientBase<TChannel> where TChannel : class
     {
+        private const int _MaxReceivedMessageSize = 1024 * 1024;
+        private const HttpClientCredentialType _ClientCredentialType = HttpClientCredentialType.Certificate;
+
         public ClienteBase(VersaoSoap versao, X509Certificate2 certificado, String url )
             : base(new ServiceEndpoint(ContractDescription.GetContract(typeof(TChannel))))
         {
@@ -40,15 +43,21 @@ namespace NFeSharp.Servicos
 
         private BasicHttpBinding FactorySoap11Binding()
         {
-            var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
-            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Certificate;
+            var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport)
+            {
+                MaxReceivedMessageSize = _MaxReceivedMessageSize
+            };
+            binding.Security.Transport.ClientCredentialType = _ClientCredentialType;
             return binding;
         }
 
         private WSHttpBinding FactorySoap12Binding()
         {
-            var binding = new WSHttpBinding(SecurityMode.Transport);
-            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Certificate;
+            var binding = new WSHttpBinding(SecurityMode.Transport)
+            {
+                MaxReceivedMessageSize = _MaxReceivedMessageSize
+            };
+            binding.Security.Transport.ClientCredentialType = _ClientCredentialType;
             return binding;
         }
 

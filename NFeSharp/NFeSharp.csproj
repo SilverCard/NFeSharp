@@ -60,23 +60,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Esquemas\v1_00\resEvento.cs" />
     <Compile Include="Servicos\ClienteNFe.cs" />
-    <Compile Include="Servicos\NfeConsulta2.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Servicos\NFeDistribuicaoDFe.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Servicos\Proxies\Clientes\NFeDistribuicaoDFeCliente.cs" />
     <Compile Include="Servicos\Proxies\Comportamentos\nfeCabecMsgFixer.cs" />
     <Compile Include="Servicos\Proxies\Comportamentos\nfeCabecMsgFixerBehavior.cs" />
+    <Compile Include="Servicos\Proxies\ServiceContracts\INFeDistribuicaoDFe.cs" />
     <Compile Include="Servicos\Proxies\ServiceContracts\INfeConsulta2.cs" />
     <Compile Include="Servicos\Proxies\ServiceContracts\INfeConsulta3.cs" />
     <Compile Include="Servicos\Proxies\Interfaces\INfeConsultaProtocoloCliente.cs" />
     <Compile Include="Servicos\Proxies\nfeCabecMsg.cs" />
     <Compile Include="Servicos\Proxies\Clientes\NfeConsulta2Client.cs" />
     <Compile Include="Servicos\Proxies\Clientes\NfeConsulta3Client.cs" />
-    <Compile Include="Servicos\ServicoBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UnidadesFederativas.cs" />
     <Compile Include="Esquemas\v1_00\resNFe.cs" />
     <Compile Include="Esquemas\v1_00\retDistDFeInt.cs" />

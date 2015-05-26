@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace NFeSharp.Servicos.Proxies
 {
-    public interface INfeConsultaProtocoloCliente
+    public interface INfeConsultaProtocoloCliente : System.ServiceModel.ICommunicationObject
     {
         Task<XmlNode> ConsultarProtocoloAsync(String cUf, String vDados, XmlNode nfeDadosMsg);
     }
