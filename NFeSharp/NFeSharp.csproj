@@ -65,12 +65,12 @@
     <Compile Include="Servicos\NFeDistribuicaoDFe.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Servicos\Proxies\Interfaces\INfeConsulta2.cs" />
-    <Compile Include="Servicos\Proxies\Interfaces\INfeConsulta3.cs" />
+    <Compile Include="Servicos\Proxies\ServiceContracts\INfeConsulta2.cs" />
+    <Compile Include="Servicos\Proxies\ServiceContracts\INfeConsulta3.cs" />
     <Compile Include="Servicos\Proxies\Interfaces\INfeConsultaProtocoloCliente.cs" />
     <Compile Include="Servicos\Proxies\nfeCabecMsg.cs" />
-    <Compile Include="Servicos\Proxies\NfeConsulta2Client.cs" />
-    <Compile Include="Servicos\Proxies\NfeConsulta3Client.cs" />
+    <Compile Include="Servicos\Proxies\Clientes\NfeConsulta2Client.cs" />
+    <Compile Include="Servicos\Proxies\Clientes\NfeConsulta3Client.cs" />
     <Compile Include="Servicos\ServicoBase.cs">
       <SubType>Component</SubType>
     </Compile>
