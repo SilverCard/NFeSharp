@@ -41,17 +41,18 @@ namespace NFeSharp.Utils
             }
 
             int[] digitos = chaveAcesso.Select(x => int.Parse(x.ToString())).ToArray();
-            int soma = 0, dv;
+            int soma = 0, dv, m;
 
             for (int i = digitos.Length - 2; i >= 0; )
             {
-                for (int p = 2; p <= 6 && i >= 0; p++, i--)
+                for (int p = 2; p <= 9 && i >= 0; p++, i--)
                 {
                     soma += digitos[i] * p;
                 }
             }
 
-            dv = 11 - (soma % 11);
+            m = (soma % 11);
+            dv = m <= 1 ? 0 : dv = 11 - m;
 
             return dv == digitos.Last();
         }
