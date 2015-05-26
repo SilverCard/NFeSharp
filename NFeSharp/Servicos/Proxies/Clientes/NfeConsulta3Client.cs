@@ -45,7 +45,7 @@ namespace NFeSharp.Servicos.Proxies
         public const String Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta2";
 
         public NfeConsulta3Client(X509Certificate2 certificado, String url)
-            :  base( VersaoSoap.v1_2 , certificado, url )
+            :  base(certificado, url )
         {          
         }
 

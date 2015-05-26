@@ -13,9 +13,8 @@ namespace NFeSharp.Servicos
     public abstract class ClienteBase<TChannel> : ClientBase<TChannel> where TChannel : class
     {
         private const int _MaxReceivedMessageSize = 1024 * 1024;
-        private const HttpClientCredentialType _ClientCredentialType = HttpClientCredentialType.Certificate;
 
-        public ClienteBase(VersaoSoap versao, X509Certificate2 certificado, String url )
+        public ClienteBase(X509Certificate2 certificado, String url )
             : base(new ServiceEndpoint(ContractDescription.GetContract(typeof(TChannel))))
         {
             if(certificado == null)
@@ -27,44 +26,26 @@ namespace NFeSharp.Servicos
                 throw new ArgumentNullException("url");
             }
 
-            if(versao == VersaoSoap.v1_1)
-            {
-                Endpoint.Binding = FactorySoap11Binding();
-            }
-            else
-            {
-                Endpoint.Binding = FactorySoap12Binding();
-            }
-
+            Endpoint.Binding = FactorySoap12Binding();
             Endpoint.EndpointBehaviors.Add(new NFeSharp.Servicos.Proxies.nfeCabecMsgFixerBehavior());
             Endpoint.Address = new EndpointAddress(url);
             ClientCredentials.ClientCertificate.Certificate = certificado;
         }
 
-        private BasicHttpBinding FactorySoap11Binding()
+        private CustomBinding FactorySoap12Binding()
         {
-            var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport)
-            {
-                MaxReceivedMessageSize = _MaxReceivedMessageSize
-            };
-            binding.Security.Transport.ClientCredentialType = _ClientCredentialType;
-            return binding;
-        }
+            var binding = new CustomBinding();
+          
+            var httpsb = new HttpsTransportBindingElement();
+            httpsb.RequireClientCertificate = true;
+            httpsb.MaxReceivedMessageSize = _MaxReceivedMessageSize;
 
-        private WSHttpBinding FactorySoap12Binding()
-        {
-            var binding = new WSHttpBinding(SecurityMode.Transport)
-            {
-                MaxReceivedMessageSize = _MaxReceivedMessageSize
-            };
-            binding.Security.Transport.ClientCredentialType = _ClientCredentialType;
-            return binding;
-        }
+            var tmb = new TextMessageEncodingBindingElement(MessageVersion.Soap12, Encoding.UTF8);            
 
-        public enum VersaoSoap
-        {
-            v1_1,
-            v1_2,
+            // o HttpTransportBindingElement precisa aparecer por último.
+            binding.Elements.Add(tmb);
+            binding.Elements.Add(httpsb);
+            return binding;
         }
     }
 }

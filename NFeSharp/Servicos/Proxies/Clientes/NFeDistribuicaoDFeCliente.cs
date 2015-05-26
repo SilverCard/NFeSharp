@@ -29,7 +29,7 @@ namespace NFeSharp.Servicos.Proxies
         public const String Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe";
 
         public NFeDistribuicaoDFeCliente(X509Certificate2 certificado, String url)
-            :  base( VersaoSoap.v1_1 , certificado, url )
+            :  base(certificado, url )
         {          
         }
 
