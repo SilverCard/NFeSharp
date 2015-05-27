@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NFeSharp.Esquemas;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -123,6 +124,112 @@ namespace NFeSharp.Utils
             }
 
             return result;
+        }
+
+        public static XmlDocument CriarXml(String stringXml)
+        {
+            if (String.IsNullOrWhiteSpace(stringXml))
+            {
+                throw new ArgumentNullException("stringXml");
+            }
+            XmlDocument xml = new XmlDocument()
+            {
+                PreserveWhitespace = true
+            };
+
+
+            try
+            {
+                xml.LoadXml(stringXml);
+            }
+            catch (Exception e)
+            {
+                throw new NFeSharpException("Não foi possuir interpretar a string Xml.", e);
+            }
+
+            return xml;
+        }
+
+        /// <summary>
+        /// Monta um Xml de processamento da NFe apartir dos elementos NFe e protNFe
+        /// </summary>
+        /// <param name="nfe">Xml NFe</param>
+        /// <param name="protNFe">Xml protNFe</param>
+        /// <param name="versao">Versão do documento</param>
+        /// <returns>Xml de processamento da Nfe</returns>
+        public static XmlDocument MontarNFeProcessamento(XmlNode nfe, XmlNode protNFe, String versao)
+        {
+            if (nfe == null) throw new ArgumentNullException("nfe");
+            if (protNFe == null) throw new ArgumentNullException("protNFe");
+
+            if (nfe.Name != "NFe") throw new ArgumentException("O parametro nfe não é um elemento NFe.");
+            if (protNFe.Name != "protNFe") throw new ArgumentException("O parametro protNFe não é um elemento protNFe.");
+
+            XmlDocument xml = new XmlDocument();
+            var nfeProcElement = xml.CreateElement("nfeProc", Namespaces.NFe);
+            var versaoAtributo = xml.CreateAttribute("versao");
+            versaoAtributo.Value = versao;
+            xml.AppendChild(nfeProcElement);
+            var newNFe = xml.ImportNode(nfe, true);
+            var newProtNFe = xml.ImportNode(protNFe, true);
+            nfeProcElement.Attributes.Append(versaoAtributo);
+            nfeProcElement.AppendChild(newNFe);
+            nfeProcElement.AppendChild(newProtNFe);
+
+            return xml;
+        }
+
+        /// <summary>
+        /// Monta um Xml de processamento da NFe apartir do arquivo enviado e recebido ao Sefaz.
+        /// </summary>
+        /// <param name="xmlEnvio">Xml enviado ao Sefaz</param>
+        /// <param name="xmlRetorno">Xml recebido do Sefaz</param>
+        /// <returns>Xml de processamento da Nfe</returns>
+        public static XmlDocument MontarNFeProcessamento(XmlNode xmlEnvio, XmlNode xmlRetorno)
+        {
+            if (xmlEnvio == null) throw new ArgumentNullException("xmlEnvio");
+            if (xmlRetorno == null) throw new ArgumentNullException("xmlRetorno");
+
+            if (xmlEnvio.Name != "enviNFe") throw new ArgumentException("O parametro xmlEnvio não é um elemento enviNFe.");
+
+
+            NameTable nt = new NameTable();
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(nt);
+            nsmgr.AddNamespace("nfe", Namespaces.NFe);
+
+            var nfeElement = xmlEnvio.SelectSingleNode("//nfe:NFe", nsmgr);
+            if (nfeElement == null)
+            {
+                throw new ArgumentException("Elemento NFe não encontrado no Xml de envio.");
+            }
+
+            var protNfe = xmlRetorno.SelectSingleNode("//nfe:protNFe", nsmgr);
+            if (protNfe == null)
+            {
+                throw new ArgumentException("Elemento protNfe não encontrado no Xml de retorno.");
+            }
+
+            var versao = xmlEnvio.Attributes["versao"];
+            if (versao == null) throw new ArgumentNullException("O elemento enviNFe não possui o atributo versão.");
+
+            return MontarNFeProcessamento(nfeElement, protNfe, versao.Value);
+        }
+
+        /// <summary>
+        /// Monta um Xml de processamento da NFe apartir do arquivo enviado e recebido ao Sefaz.
+        /// </summary>
+        /// <param name="xmlEnvio">Xml enviado ao Sefaz</param>
+        /// <param name="xmlRetorno">Xml recebido do Sefaz</param>
+        /// <returns>Xml de processamento da Nfe</returns>
+        public static XmlDocument MontarNFeProcessamento(String xmlEnvio, String xmlRetorno)
+        {
+            if (String.IsNullOrWhiteSpace(xmlEnvio)) throw new ArgumentNullException("xmlEnvio");
+            if (String.IsNullOrWhiteSpace(xmlRetorno)) throw new ArgumentNullException("xmlRetorno");
+
+            XmlDocument xmlEnvio2 = CriarXml(xmlEnvio);
+            XmlDocument xmlRetorno2 = CriarXml(xmlRetorno);
+
+            return MontarNFeProcessamento((XmlNode)xmlEnvio2.DocumentElement, (XmlNode)xmlRetorno2.DocumentElement);
         }
     }
 }
