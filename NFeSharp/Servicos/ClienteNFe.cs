@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Services.Protocols;
+using System.Xml;
 
 namespace NFeSharp.Servicos
 {
@@ -57,11 +58,23 @@ namespace NFeSharp.Servicos
 
             if (response == null)
             {
-                throw new Exception("A resposta do serviço não foi entendida.");
-            }            
+                throw new NFeSharpException("A resposta do serviço foi entendida.");
+            }
 
-            return XmlUtils.Deserialize<NFeSharp.Esquemas.v1_00.retDistDFeInt>(response.nfeDistDFeInteresseResult);
-        }        
+            return DeserializeSeguro<NFeSharp.Esquemas.v1_00.retDistDFeInt>(response.nfeDistDFeInteresseResult);
+        } 
+       
+        private T DeserializeSeguro<T>(XmlNode xml)
+        {
+            try
+            {
+                return XmlUtils.Deserialize<T>(xml);
+            }
+            catch(Exception e)
+            {
+                throw new NFeSharpException("Não foi possível deserializar a resposta do serviço.", e);
+            }
+        }
 
         public async Task<NFeSharp.Esquemas.v3_10.retConsSitNFe> NfeConsultaProtocoloAsync(String chaveAcesso)
         {
@@ -77,11 +90,11 @@ namespace NFeSharp.Servicos
             // Correção para SEFAZ do PR.
             if(cUF == 41)
             {
-                cliente = new Proxies.NfeConsulta3Client(this.Certificado, url);
+                cliente = new Proxies.NfeConsulta3Cliente(this.Certificado, url);
             }
             else
             {
-                cliente = new Proxies.NfeConsulta2Client(this.Certificado, url);
+                cliente = new Proxies.NfeConsulta2Cliente(this.Certificado, url);
             }
 
 
@@ -97,10 +110,10 @@ namespace NFeSharp.Servicos
 
             if (respostaXml == null)
             {
-                throw new Exception("A resposta do serviço não foi entendida.");
+                throw new NFeSharpException("A resposta do serviço não foi entendida.");
             }
 
-            return XmlUtils.Deserialize<NFeSharp.Esquemas.v3_10.retConsSitNFe>(respostaXml);
+            return DeserializeSeguro<NFeSharp.Esquemas.v3_10.retConsSitNFe>(respostaXml);
         }
 
         /// <summary>
@@ -118,14 +131,14 @@ namespace NFeSharp.Servicos
 
             if (autorizador == null)
             {
-                throw new Exception(String.Format("Nenhum autorizador encontrado para o serviço \"{0}\" {1} na UF \"{2}\".", idServico, versaoServico, uf ));
+                throw new NFeSharpException(String.Format("Nenhum autorizador encontrado para o serviço \"{0}\" {1} na UF \"{2}\".", idServico, versaoServico, uf));
             }
 
             var servico = autorizador.Servicos.FirstOrDefault(x => x.Nome == idServico && x.Versao == versaoServico);
 
             if (servico == null)
             {
-                throw new Exception(String.Format("Nenhum serviço foi encontrado para o autorizador \"{0}.\"", autorizador.ID));
+                throw new NFeSharpException(String.Format("Nenhum serviço foi encontrado para o autorizador \"{0}.\"", autorizador.ID));
             }
 
             return servico.Url;

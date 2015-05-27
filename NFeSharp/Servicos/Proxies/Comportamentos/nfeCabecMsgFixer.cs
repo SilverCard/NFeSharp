@@ -10,6 +10,9 @@ using System.Xml;
 
 namespace NFeSharp.Servicos.Proxies
 {
+    /// <summary>
+    /// Essa classe remove o prefixo adicionado pelo WCF no cabeçalho, que não é aceito pela SEFAZ do PR.
+    /// </summary>
     internal class nfeCabecMsgFixer : IClientMessageInspector
     {
         public static String SelectNodeTextByName(XmlDocument d, String name)
@@ -18,6 +21,11 @@ namespace NFeSharp.Servicos.Proxies
             return node == null ? String.Empty : node.InnerText;
         }
 
+        /// <summary>
+        /// Busca o índice da nfeCabecMsg serializada na lista de cabeçalhos.
+        /// </summary>
+        /// <param name="request">Mensagem</param>
+        /// <returns>Índice da nfeCabecMsg, -1 caso não encontrada.</returns>
         private int BuscarIndice(Message request)
         {
             for (int i = 0; i < request.Headers.Count; i++)
@@ -31,6 +39,10 @@ namespace NFeSharp.Servicos.Proxies
             return -1;
         }
 
+        /// <summary>
+        /// Substitui a nfeCabecMsg serializada por uma não serializada.
+        /// </summary>
+        /// <returns>Mensagem corrigida.</returns>
         public object BeforeSendRequest(ref Message request, IClientChannel channel)
         {
             int idx = BuscarIndice(request);

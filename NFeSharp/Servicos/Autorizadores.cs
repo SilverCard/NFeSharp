@@ -21,12 +21,28 @@ namespace NFeSharp.Servicos
 
         public static Autorizadores LerDeArquivo(String caminho)
         {
+            if (String.IsNullOrWhiteSpace(caminho))
+            {
+                throw new ArgumentException("O caminho do arquivo é inválido.", "caminho");
+            }
+            if(!File.Exists(caminho))
+            {
+                throw new FileNotFoundException("Arquivo xml de autorizados não encontrado.", caminho);
+            }
+
             Autorizadores autorizadores = null;
             XmlSerializer serializer = new XmlSerializer(typeof(Autorizadores));
 
             using (StreamReader reader = new StreamReader(caminho))
             {
-                autorizadores = (Autorizadores)serializer.Deserialize(reader);
+                try
+                {
+                    autorizadores = (Autorizadores)serializer.Deserialize(reader);
+                }
+                catch (Exception ex)
+                {
+                    throw new NFeSharpException("Falha ao interpretar o arquivo xml.", ex);
+                }
             }
 
             return autorizadores;

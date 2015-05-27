@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace NFeSharp.Servicos.Proxies
 {
+    /// <summary>
+    /// Esse comportamento adiciona o nfeCabecMsgFixer ao endpoint.
+    /// </summary>
     internal class nfeCabecMsgFixerBehavior : IEndpointBehavior
     {
         public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)

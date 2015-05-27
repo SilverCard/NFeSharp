@@ -48,6 +48,7 @@
     <Compile Include="Esquemas\v3_10\consSitNFe.cs" />
     <Compile Include="Esquemas\v3_10\retConsSitNFe.cs" />
     <Compile Include="Esquemas\v3_10\nfeProc.cs" />
+    <Compile Include="NFeSharpException.cs" />
     <Compile Include="Servicos\Autorizadores.cs" />
     <Compile Include="Esquemas\Namespaces.cs" />
     <Compile Include="Esquemas\TiposBasicos\TAmb.cs" />
@@ -68,8 +69,8 @@
     <Compile Include="Servicos\Proxies\ServiceContracts\INfeConsulta3.cs" />
     <Compile Include="Servicos\Proxies\Interfaces\INfeConsultaProtocoloCliente.cs" />
     <Compile Include="Servicos\Proxies\nfeCabecMsg.cs" />
-    <Compile Include="Servicos\Proxies\Clientes\NfeConsulta2Client.cs" />
-    <Compile Include="Servicos\Proxies\Clientes\NfeConsulta3Client.cs" />
+    <Compile Include="Servicos\Proxies\Clientes\NfeConsulta2Cliente.cs" />
+    <Compile Include="Servicos\Proxies\Clientes\NfeConsulta3Cliente.cs" />
     <Compile Include="UnidadesFederativas.cs" />
     <Compile Include="Esquemas\v1_00\resNFe.cs" />
     <Compile Include="Esquemas\v1_00\retDistDFeInt.cs" />
@@ -77,10 +78,9 @@
     <Compile Include="Utils\XmlUtils.cs" />
     <Compile Include="Servicos\VersaoServico.cs" />
     <Compile Include="Esquemas\v1_00\procEventoNFe.cs" />
+    <Compile Include="Esquemas\v2_00\nfeProc.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Esquemas\v2_00\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

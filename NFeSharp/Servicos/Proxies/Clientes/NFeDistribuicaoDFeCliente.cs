@@ -23,6 +23,9 @@ namespace NFeSharp.Servicos.Proxies
          public XmlNode nfeDistDFeInteresseResult;        
     }
 
+    /// <summary>
+    /// Proxy WCF para o serviço NFeDistribuicaoDFe
+    /// </summary>
     public class NFeDistribuicaoDFeCliente : ClienteBase<INFeDistribuicaoDFe>, INFeDistribuicaoDFe
     {
         public const String Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe";

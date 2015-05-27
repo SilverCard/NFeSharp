@@ -36,15 +36,17 @@ namespace NFeSharp.Servicos.Proxies
         public XmlNode nfeConsultaNF2Result;
     }
 
-    public class NfeConsulta2Client : ClienteBase<INfeConsulta2>, INfeConsulta2, INfeConsultaProtocoloCliente
+    /// <summary>
+    /// Proxy WCF para o serviço NfeConsultaProtocolo
+    /// </summary>
+    public class NfeConsulta2Cliente : ClienteBase<INfeConsulta2>, INfeConsulta2, INfeConsultaProtocoloCliente
     {
         public const String Namespace = "http://www.portalfiscal.inf.br/nfe/wsdl/NfeConsulta2";
 
-        public NfeConsulta2Client(X509Certificate2 certificado, String url)
+        public NfeConsulta2Cliente(X509Certificate2 certificado, String url)
             : base(certificado, url )
         {
         }
-
 
         public nfeConsultaNF2Response nfeConsultaNF2(nfeConsultaNF2Request request)
         {
@@ -58,7 +60,7 @@ namespace NFeSharp.Servicos.Proxies
 
         public async Task<XmlNode> ConsultarProtocoloAsync(String cUf, String vDados, XmlNode nfeDadosMsg)
         {
-            var resposta = await nfeConsultaNF2Async(new nfeConsultaNF2Request(cUf, vDados, nfeDadosMsg, NfeConsulta2Client.Namespace));
+            var resposta = await nfeConsultaNF2Async(new nfeConsultaNF2Request(cUf, vDados, nfeDadosMsg, NfeConsulta2Cliente.Namespace));
             return resposta.nfeConsultaNF2Result;
         }
     }
