@@ -45,7 +45,6 @@ namespace NFeSharp.Esquemas.v1_00
         /// Data e Hora de emissão do Documento Fiscal (AAAA-MM-DDThh:mm:ssTZD) ex.: 2012-09-01T13:00:00-03:00
         /// </summary>
         public DateTime dhEmi { get; set; }
-
         
         /// <summary>
         /// Tipo do Documento Fiscal (0 - entrada; 1 - saída)
@@ -55,7 +54,7 @@ namespace NFeSharp.Esquemas.v1_00
         /// <summary>
         /// Valor Total da NF-e
         /// </summary>
-        public string vNF { get; set; }
+        public Decimal vNF { get; set; }
 
         /// <summary>
         /// Digest Value da NF-e processada. Utilizado para conferir a integridade da NF-e original

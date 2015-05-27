@@ -10690,15 +10690,11 @@ namespace NFeSharp.Esquemas.v2_00
 
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeDetImpostoCOFINSCOFINSOutr
     {
 
-
         public TNFeInfNFeDetImpostoCOFINSCOFINSOutrCST CST { get; set; }
-
 
         [XmlElement("pCOFINS", typeof(string))]
         [XmlElement("qBCProd", typeof(string))]
@@ -10716,174 +10712,95 @@ namespace NFeSharp.Esquemas.v2_00
         public string vCOFINS { get; set; }
     }
 
-
    
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public enum TNFeInfNFeDetImpostoCOFINSCOFINSOutrCST
     {
-
-
         [XmlEnum("49")]
         Item49,
-
-
         [XmlEnum("50")]
         Item50,
-
-
         [XmlEnum("51")]
         Item51,
-
-
         [XmlEnum("52")]
         Item52,
-
-
         [XmlEnum("53")]
         Item53,
-
-
         [XmlEnum("54")]
         Item54,
-
-
         [XmlEnum("55")]
         Item55,
-
-
         [XmlEnum("56")]
         Item56,
-
-
         [XmlEnum("60")]
         Item60,
-
-
         [XmlEnum("61")]
         Item61,
-
-
         [XmlEnum("62")]
         Item62,
-
-
         [XmlEnum("63")]
         Item63,
-
-
         [XmlEnum("64")]
         Item64,
-
-
         [XmlEnum("65")]
         Item65,
-
-
         [XmlEnum("66")]
         Item66,
-
-
         [XmlEnum("67")]
         Item67,
-
-
         [XmlEnum("70")]
         Item70,
-
-
         [XmlEnum("71")]
         Item71,
-
-
         [XmlEnum("72")]
         Item72,
-
-
         [XmlEnum("73")]
         Item73,
-
-
         [XmlEnum("74")]
         Item74,
-
-
         [XmlEnum("75")]
         Item75,
-
-
         [XmlEnum("98")]
         Item98,
-
-
         [XmlEnum("99")]
         Item99,
     }
-
 
    
     [Serializable]
     [XmlType(Namespace = Namespaces.NFe, IncludeInSchema = false)]
     public enum ItemsChoiceType3
     {
-
-
         pCOFINS,
-
-
         qBCProd,
-
-
         vAliqProd,
-
-
         vBC,
     }
-
-
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeDetImpostoCOFINSCOFINSQtde
-    {
-
-
+    {        
         public TNFeInfNFeDetImpostoCOFINSCOFINSQtdeCST CST { get; set; }
-
-
         public string qBCProd { get; set; }
-
-
         public string vAliqProd { get; set; }
-
-
         public string vCOFINS { get; set; }
     }
-
 
    
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public enum TNFeInfNFeDetImpostoCOFINSCOFINSQtdeCST
     {
-
-
         [XmlEnum("03")]
         Item03,
     }
-
-
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeDetImpostoCOFINSST
     {
-
-
         [XmlElement("pCOFINS", typeof(string))]
         [XmlElement("qBCProd", typeof(string))]
         [XmlElement("vAliqProd", typeof(string))]
@@ -10899,173 +10816,79 @@ namespace NFeSharp.Esquemas.v2_00
 
         public string vCOFINS { get; set; }
     }
-
-
    
     [Serializable]
     [XmlType(Namespace = Namespaces.NFe, IncludeInSchema = false)]
     public enum ItemsChoiceType4
     {
-
-
         pCOFINS,
-
-
         qBCProd,
-
-
         vAliqProd,
-
-
         vBC,
     }
-
-
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeTotal
     {
-
-
         public TNFeInfNFeTotalICMSTot ICMSTot { get; set; }
-
-
         public TNFeInfNFeTotalISSQNtot ISSQNtot { get; set; }
-
-
         public TNFeInfNFeTotalRetTrib retTrib { get; set; }
     }
-
-
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeTotalICMSTot
     {
 
-
         public string vBC { get; set; }
-
-
         public string vICMS { get; set; }
-
-
         public string vBCST { get; set; }
-
-
         public string vST { get; set; }
-
-
         public string vProd { get; set; }
-
-
         public string vFrete { get; set; }
-
-
         public string vSeg { get; set; }
-
-
         public string vDesc { get; set; }
-
-
         public string vII { get; set; }
-
-
         public string vIPI { get; set; }
-
-
         public string vPIS { get; set; }
-
-
         public string vCOFINS { get; set; }
-
-
         public string vOutro { get; set; }
-
-
         public string vNF { get; set; }
-
-
         public string vTotTrib { get; set; }
     }
-
-
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeTotalISSQNtot
     {
-
-
         public string vServ { get; set; }
-
-
         public string vBC { get; set; }
-
-
         public string vISS { get; set; }
-
-
         public string vPIS { get; set; }
-
-
         public string vCOFINS { get; set; }
     }
-
-
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeTotalRetTrib
     {
-
-
         public string vRetPIS { get; set; }
-
-
         public string vRetCOFINS { get; set; }
-
-
         public string vRetCSLL { get; set; }
-
-
         public string vBCIRRF { get; set; }
-
-
         public string vIRRF { get; set; }
-
-
         public string vBCRetPrev { get; set; }
-
-
         public string vRetPrev { get; set; }
     }
-
-
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeTransp
     {
 
-
         public TNFeInfNFeTranspModFrete modFrete { get; set; }
-
-
         public TNFeInfNFeTranspTransporta transporta { get; set; }
-
-
         public TNFeInfNFeTranspRetTransp retTransp { get; set; }
 
 
@@ -11086,30 +10909,24 @@ namespace NFeSharp.Esquemas.v2_00
         public TNFeInfNFeTranspVol[] vol { get; set; }
     }
 
-
    
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public enum TNFeInfNFeTranspModFrete
     {
 
-
         [XmlEnum("0")]
         Item0,
-
 
         [XmlEnum("1")]
         Item1,
 
-
         [XmlEnum("2")]
         Item2,
-
 
         [XmlEnum("9")]
         Item9,
     }
-
 
    
     [Serializable]
@@ -11117,72 +10934,43 @@ namespace NFeSharp.Esquemas.v2_00
     public class TNFeInfNFeTranspTransporta
     {
 
-
         [XmlElement("CNPJ", typeof(string))]
         [XmlElement("CPF", typeof(string))]
         [XmlChoiceIdentifier("ItemElementName")]
         public string Item { get; set; }
 
-
-        [XmlIgnore()]
+        [XmlIgnore]
         public TipoDocumento ItemElementName { get; set; }
 
 
         public string xNome { get; set; }
-
-
         public string IE { get; set; }
-
-
         public string xEnder { get; set; }
-
-
         public string xMun { get; set; }
-
-
         public TUf UF { get; set; }
 
-
-        [XmlIgnore()]
+        [XmlIgnore]
         public bool UFSpecified { get; set; }
-    }
-
-    
+    }   
 
    
     [Serializable]
-
-
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeTranspRetTransp
     {
-
-
         public string vServ { get; set; }
-
-
         public string vBCRet { get; set; }
-
-
         public string pICMSRet { get; set; }
-
-
         public string vICMSRet { get; set; }
 
-
         public TCfopTransp CFOP { get; set; }
-
-
         public string cMunFG { get; set; }
     }
-
-
    
     [Serializable]
     [XmlType(Namespace = Namespaces.NFe)]
     public enum TCfopTransp
     {
-
 
         [XmlEnum("5351")]
         Item5351,
@@ -11276,51 +11064,27 @@ namespace NFeSharp.Esquemas.v2_00
         Item7358,
     }
 
-
    
     [Serializable]
     [XmlType(Namespace = Namespaces.NFe, IncludeInSchema = false)]
     public enum ItemsChoiceType5
     {
-
-
         balsa,
-
-
         reboque,
-
-
         vagao,
-
-
         veicTransp,
     }
-
-
    
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeTranspVol
     {
-
-
         public string qVol { get; set; }
-
-
         public string esp { get; set; }
-
-
         public string marca { get; set; }
-
-
         public string nVol { get; set; }
-
-
         public string pesoL { get; set; }
-
-
         public string pesoB { get; set; }
-
 
         [XmlElement("lacres")]
         public TNFeInfNFeTranspVolLacres[] lacres { get; set; }
@@ -11341,10 +11105,7 @@ namespace NFeSharp.Esquemas.v2_00
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeCobr
     {
-
-
         public TNFeInfNFeCobrFat fat { get; set; }
-
 
         [XmlElement("dup")]
         public TNFeInfNFeCobrDup[] dup { get; set; }
@@ -11356,17 +11117,9 @@ namespace NFeSharp.Esquemas.v2_00
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeCobrFat
     {
-
-
         public string nFat { get; set; }
-
-
         public string vOrig { get; set; }
-
-
         public string vDesc { get; set; }
-
-
         public string vLiq { get; set; }
     }
 
@@ -11376,14 +11129,8 @@ namespace NFeSharp.Esquemas.v2_00
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeCobrDup
     {
-
-
         public string nDup { get; set; }
-
-
         public string dVenc { get; set; }
-
-
         public string vDup { get; set; }
     }
 
@@ -11394,25 +11141,19 @@ namespace NFeSharp.Esquemas.v2_00
     public class TNFeInfNFeInfAdic
     {
 
-
         public string infAdFisco { get; set; }
 
-
         public string infCpl { get; set; }
-
 
         [XmlElement("obsCont")]
         public TNFeInfNFeInfAdicObsCont[] obsCont { get; set; }
 
-
         [XmlElement("obsFisco")]
         public TNFeInfNFeInfAdicObsFisco[] obsFisco { get; set; }
-
 
         [XmlElement("procRef")]
         public TNFeInfNFeInfAdicProcRef[] procRef { get; set; }
     }
-
 
    
     [Serializable]
@@ -11420,9 +11161,7 @@ namespace NFeSharp.Esquemas.v2_00
     public class TNFeInfNFeInfAdicObsCont
     {
 
-
         public string xTexto { get; set; }
-
 
         [XmlAttribute()]
         public string xCampo { get; set; }
@@ -11434,7 +11173,6 @@ namespace NFeSharp.Esquemas.v2_00
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public class TNFeInfNFeInfAdicObsFisco
     {
-
         public string xTexto { get; set; }
 
         [XmlAttribute()]
@@ -11450,35 +11188,27 @@ namespace NFeSharp.Esquemas.v2_00
         public string nProc { get; set; }
         public TNFeInfNFeInfAdicProcRefIndProc indProc { get; set; }
     }
-
-
    
     [Serializable]
     [XmlType(AnonymousType = true, Namespace = Namespaces.NFe)]
     public enum TNFeInfNFeInfAdicProcRefIndProc
     {
 
-
         [XmlEnum("0")]
         Item0,
-
 
         [XmlEnum("1")]
         Item1,
 
-
         [XmlEnum("2")]
         Item2,
-
 
         [XmlEnum("3")]
         Item3,
 
-
         [XmlEnum("9")]
         Item9,
     }
-
 
    
     [Serializable]
@@ -11506,14 +11236,11 @@ namespace NFeSharp.Esquemas.v2_00
     public class TNFeInfNFeCana
     {
 
-
         public string safra { get; set; }
         public string @ref { get; set; }
 
-
         [XmlElement("forDia")]
         public TNFeInfNFeCanaForDia[] forDia { get; set; }
-
 
         public string qTotMes { get; set; }
         public string qTotAnt { get; set; }
